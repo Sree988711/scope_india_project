@@ -1,0 +1,32 @@
+.nav_color {
+    background-color: #071e67;
+    opacity: 0.97;
+    position: sticky;
+    top: 0px;
+}
+
+.navbar .nav-link {
+    color: white !important; /* Default color for nav-links */
+}
+
+.navbar .nav-link:hover {
+    color: #fbba02 !important; /* Color for hovered links */
+}
+
+.navbar .nav-link.active {
+    color: #fbba02 !important; /* Color for the active link */
+}
+header{
+    font-family:"Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400px;
+}
+.register{
+    color: #ffffff;
+    background: #0039a4;
+    font-weight: 600;
+    border: 1px solid #f1de01d1 !important;
+    display: inline !important;
+    padding: 6px 10px !important;
+    background-image: linear-gradient(#f2b42d, #fd0300);
+}
