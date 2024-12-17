@@ -45,10 +45,85 @@
                         <a class="nav-link" href="#">Contact us</a>
                         <button class="register" type="submit">Register Now</button>
                     </div>
+
                 </div>
             </nav>
         </div>
+
     </header>
+
+    <div class="container-fluid p-0 position-relative">
+        <!-- First image as the background -->
+        <img src="{% static 'img/slider_bg.jpg' %}" alt="slider_bg" class="img-fluid w-100 parent_logo">
+    
+        <!-- Second image centered on top of the first one -->
+        <img src="{% static 'img/scope-india-logo-home-page.png' %}" alt="SI_logo_home" class="child-logo">
+    </div>
+    
+    <div class='container-fluid slider'>
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="{% static "img\slider\Devops-training-scopeindia.jpg" %}" class="d-block mx-auto" alt="1">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-aws-certification-course-(1).jpg" %}" class="d-block mx-auto" alt="2">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-azure-certification-course.jpg" %}" class="d-block mx-auto" alt="3">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-digital-marketing-course.jpg" %}" class="d-block mx-auto" alt="4">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-dotnet-core-full-stack-course.jpg" %}" class="d-block mx-auto" alt="5">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-flutter-fullstack-course.jpg" %}" class="d-block mx-auto" alt="6">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-java-full-stack-course (1).jpg" %}" class="d-block mx-auto" alt="7">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-mean-mern-stack-course.jpg" %}" class="d-block mx-auto" alt="8">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-network-server-administration-course (1).jpg" %}" class="d-block mx-auto" alt="9">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-php-full-stack-course (1).jpg" %}" class="d-block mx-auto" alt="10">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-python-full-stack-course (1).jpg" %}" class="d-block mx-auto" alt="11">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="{% static "img\slider\scope-india-software-testing-manual-automation-course.jpg" %}" class="d-block mx-auto" alt="12">
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="container-fluid p-0 bottomdiv"></div>
+
     <p>
         {% lorem 10000 w random %}
     </p>

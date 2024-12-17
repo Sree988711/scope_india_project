@@ -3,6 +3,7 @@
     opacity: 0.97;
     position: sticky;
     top: 0px;
+    z-index: 10;
 }
 
 .navbar .nav-link {
@@ -29,4 +30,34 @@ header{
     display: inline !important;
     padding: 6px 10px !important;
     background-image: linear-gradient(#f2b42d, #fd0300);
+}
+.parent_logo {
+    position: relative; /* Establish positioning context for children */
+}
+
+.child-logo {
+    position: absolute; /* Position the logo relative to the container */
+    top: 50%; /* Move it to the vertical center */
+    left: 50%; /* Move it to the horizontal center */
+    transform: translate(-50%, -50%); /* Adjust positioning to center it exactly */
+    z-index: 1; /* Ensure it appears on top */
+    max-width: 550px; /* Optional: Restrict the logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.carousel-item img {
+    max-width: 900px; /* Set the maximum width */
+    max-height: 615px; /* Set the maximum height */
+    margin: 0 auto; /* Center the image horizontally */
+    object-fit: contain; /* Ensure the image scales proportionally */
+}
+
+.slider{
+    background-color: #050a4c;
+}
+
+.bottomdiv {
+    height: 127px;
+    background-image: url('../img/snowpark-home-slide-decoration-bottomm.png');
+    background-color: #050a4c;
 }
