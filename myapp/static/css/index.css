@@ -33,6 +33,7 @@ header{
 }
 .parent_logo {
     position: relative; /* Establish positioning context for children */
+    z-index: -1;
 }
 
 .child-logo {
@@ -45,19 +46,85 @@ header{
     height: auto; /* Maintain aspect ratio */
 }
 
-.carousel-item img {
-    max-width: 900px; /* Set the maximum width */
-    max-height: 615px; /* Set the maximum height */
-    margin: 0 auto; /* Center the image horizontally */
-    object-fit: contain; /* Ensure the image scales proportionally */
-}
+/* .carousel-item img {
+    max-width: 900px;
+    max-height: 615px;
+    margin: 0 auto; 
+    object-fit: contain; 
+} */
 
 .slider{
     background-color: #050a4c;
+    position: relative;
+    z-index: 2;
 }
 
 .bottomdiv {
     height: 127px;
     background-image: url('../img/snowpark-home-slide-decoration-bottomm.png');
     background-color: #050a4c;
+}
+
+/* slickslider  */
+.slick-slider, .slick-slider li {
+    margin: 0;
+    padding: 0;
+}
+
+.slick-slider li {
+    margin: 0 5px; /* Adds space between the images */
+}
+
+.slick-slide img {
+    transform: scale(0.98); /* Reduce size of non-centered images */
+    max-width: 880px;
+    max-height: 602px;
+}
+
+.slick-center img {
+    transform: scale(1.02); /* Increase size of centered image */
+    /* width: 898;
+    height: 613; */
+}
+
+/* Responsivenesssss */
+@media (max-width: 1024px) {
+    .slick-slide img {
+        max-width: 734px;
+        max-height: 495px;
+    }
+
+    .slick-center img {
+        transform: scale(1.02);
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    .child-logo{
+        max-width: 442px;
+    }
+    .slick-slide img {
+        max-width: 442px;
+        max-height: 303px;
+    }
+
+    .slick-center img {
+        transform: scale(1.02);
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .child-logo{
+        max-width: 273px;
+    }
+    .slick-slide img {
+        max-width: 273px;
+        max-height: 187px;
+    }
+
+    .slick-center img {
+        transform: scale(1.02);
+    }
 }

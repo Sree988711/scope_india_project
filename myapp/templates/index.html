@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
+
 </head>
 <body>
     <header class="nav_color">
@@ -59,7 +62,7 @@
         <!-- Second image centered on top of the first one -->
         <img src="{% static 'img/scope-india-logo-home-page.png' %}" alt="SI_logo_home" class="child-logo">
     </div>
-    
+<!-- 
     <div class='container-fluid slider'>
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -121,11 +124,104 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+    </div>-->
+
+    <div class="container-fluid p-0 slider">
+        <ul class="slick-slider">
+            <li>
+                <img src="{% static 'img/slider/Devops-training-scopeindia.jpg' %}" class="d-block mx-auto" alt="1">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-aws-certification-course-(1).jpg' %}" class="d-block mx-auto" alt="2">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-azure-certification-course.jpg' %}" class="d-block mx-auto" alt="3">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-digital-marketing-course.jpg' %}" class="d-block mx-auto" alt="4">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-dotnet-core-full-stack-course.jpg' %}" class="d-block mx-auto" alt="5">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-flutter-fullstack-course.jpg' %}" class="d-block mx-auto" alt="6">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-java-full-stack-course (1).jpg' %}" class="d-block mx-auto" alt="7">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-mean-mern-stack-course.jpg' %}" class="d-block mx-auto" alt="8">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-network-server-administration-course (1).jpg' %}" class="d-block mx-auto" alt="9">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-php-full-stack-course (1).jpg' %}" class="d-block mx-auto" alt="10">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-python-full-stack-course (1).jpg' %}" class="d-block mx-auto" alt="11">
+            </li>
+            <li>
+                <img src="{% static 'img/slider/scope-india-software-testing-manual-automation-course.jpg' %}" class="d-block mx-auto" alt="12">
+            </li>
+        </ul>
+        
+        <div class="container-fluid p-0 bottomdiv"></div>
+
     </div>
-    <div class="container-fluid p-0 bottomdiv"></div>
+    
+
 
     <p>
         {% lorem 10000 w random %}
     </p>
+
+
+
+<!-- jquerystuff -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slick-slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                centerMode: true,
+                variableWidth: true,
+                slidesToScroll: 1,  // Scroll 1 slide at a time
+                autoplay: true,  // Enable autoplay
+                autoplaySpeed: 3000,  // 3 seconds per slide
+                focusOnSelect: true,  // Allow selecting images
+                responsive: [
+                    {
+                        breakpoint: 1024,  // Tablet size
+                        settings: {
+                            slidesToShow: 2,  // Show 2 images at once on tablet
+                            centerPadding: '15%',  // Adjust padding for tablet
+                        }
+                    },
+                    {
+                        breakpoint: 768,  // Mobile size
+                        settings: {
+                            slidesToShow: 1,  // Show 1 image at once on mobile
+                            centerPadding: '10%',  // Adjust padding for mobile
+                        }
+                    },
+                    {
+                        breakpoint: 480,  // Very small screens (extra mobile)
+                        settings: {
+                            slidesToShow: 1,  // Show 1 image at once
+                            centerPadding: '0%',  // Remove center padding for small screens
+                        }
+                    }
+                ]
+                });
+            });
+
+    </script>
+
 </body>
 </html>
