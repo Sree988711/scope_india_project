@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
 .nav_color {
     background-color: #071e67;
     opacity: 0.97;
@@ -46,13 +56,6 @@ header{
     height: auto; /* Maintain aspect ratio */
 }
 
-/* .carousel-item img {
-    max-width: 900px;
-    max-height: 615px;
-    margin: 0 auto; 
-    object-fit: contain; 
-} */
-
 .slider{
     background-color: #050a4c;
     position: relative;
@@ -86,6 +89,77 @@ header{
     /* width: 898;
     height: 613; */
 }
+
+.iframedivinner{
+    max-width: 1060px;
+}
+.iframediv{
+    background-image: url('../img/si-call-back-bg.jpg');
+    padding: 3%;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+.iframediv h2{
+    color: #000c81;
+    font-size: 34px;
+    line-height: 42px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.iframediv p{
+    margin: 0 0 15px;
+    text-align: justify;
+    font-size: 15px;
+    color: #000c81;
+    margin-bottom: 20px;
+}
+.colright{
+    padding: 0 5%;
+}
+.colleft{
+    background-color: #fff;
+    height: 100%;
+    padding: 5px;
+    padding-bottom: 1px;
+    border: 7px solid #050a4c;
+    /* width: 480px;
+    height: 480px; */
+}
+.contactlist ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.contactlist ul li h3{
+    color: #009318;
+    font-size: 31px;
+    line-height: 29px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.inputstyle{
+    width: 100% !important;
+    border: 1px solid grey;
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 17px !important;
+}
+.inputbtn{
+    background-color: #18cf36;
+    width: 100%;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 17px;
+    border: 0;
+    padding: 6px 12px;
+}
+.iframedivouter{
+    position: relative;
+    margin-top: -100px;
+    z-index: 2;
+}
+
 
 /* Responsivenesssss */
 @media (max-width: 1024px) {
