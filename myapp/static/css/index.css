@@ -158,9 +158,118 @@ header{
     position: relative;
     margin-top: -100px;
     z-index: 2;
+    padding-bottom: 50px;
 }
-
-
+.fivestar{
+    max-width: 312px;
+    max-height: 119px;
+}
+.fivestardiv{
+    background-color: #fff;
+    max-width: 1060px;
+    padding: 1%;
+}
+.fivestarcontent{
+    color: #000c81;
+    text-align: center;
+}
+.fivestarrating{
+    color: #333;
+}
+.fivestarcareer{
+    font-size: 55px;
+    font-weight: 600;
+}
+.fivestarpara1{
+    font-size: 34px;
+    font-weight: 600;
+}
+.fivestarpara2{
+    text-align: justify;
+    color: #050a4c;
+}
+.buttonmargin{
+    margin: 0 7px 15px 0;
+}
+.btn_1{
+    background-color: #7c62bd;
+    color: #fff;
+    border-color: #5c1eff;
+    padding: 11px 20px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.btn_2{
+    background-color: #62bdb4;
+    color: #fff;
+    border-color: #35e9d7;
+    padding: 11px 20px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.btn_3{
+    background-color: #5ead5e;
+    color: #fff;
+    border-color: #32d732;
+    padding: 11px 20px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.btn_4{
+    background-color: #5ead5e;
+    color: #fff;
+    border-color: #32d732;
+    padding: 11px 20px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.tigpgrid img{
+    width: 64px;
+}
+.tigpgrid h2{
+    text-align: center;
+    color: #000c81;
+    font-size: 50px;
+    font-weight: 500;
+}
+.tigpgrid p{
+    text-align: justify;
+    color: #050a4c;
+    margin: 0 0 15px;
+}
+.tigpgrid{
+    margin: 50px 0;
+}
+footer{
+	background-image: url(../img/snowpark-home-footer-bg.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+    background-color: #021b5b;
+}
+.footerstart{
+    max-width: 1060px;
+    padding: 120px 0px;
+}
+.footerstart h4{
+    color: #0095eb;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
+}
+.footerstart h5{
+    color: #fff;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 5px;
+}
+.floatingcol{
+    margin-top: -50px;
+}
+.footimg{
+    margin: 50px 0px 0px 0px;
+}
 /* Responsivenesssss */
 @media (max-width: 1024px) {
     .slick-slide img {
