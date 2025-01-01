@@ -15,7 +15,10 @@ body {
     top: 0px;
     z-index: 10;
 }
-
+.navmargin{
+    padding-left: 200px;
+    padding-right: 80px;
+}
 .navbar .nav-link {
     color: white !important; /* Default color for nav-links */
 }
@@ -30,7 +33,7 @@ body {
 header{
     font-family:"Poppins", sans-serif;
     font-size: 14px;
-    font-weight: 400px;
+    font-weight: 400;
 }
 .register{
     color: #ffffff;
@@ -40,6 +43,28 @@ header{
     display: inline !important;
     padding: 6px 10px !important;
     background-image: linear-gradient(#f2b42d, #fd0300);
+}
+.hamburger-menu{
+    width: 35px;
+    height: 2.2px;
+    background-color: #fff;
+    position: relative;
+    display: none;
+    border-radius: 5px;
+}
+.hamburger-menu::before,.hamburger-menu::after{
+    content:' ';
+    position: absolute;
+    width: 35px;
+    height: 2.2px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.hamburger-menu::before{
+    top: -12px;
+}
+.hamburger-menu::after{
+    top: 12px;
 }
 .parent_logo {
     position: relative; /* Establish positioning context for children */
@@ -270,15 +295,61 @@ footer{
 .footimg{
     margin: 50px 0px 0px 0px;
 }
+.footdesc{
+    color: #bbc2d5;
+    text-align: center;
+    font-size: 14px;
+    line-height: 10px;
+}
+.isologo{
+    max-width: 400px;
+    margin: 30px auto 15px;
+}
+.footcopyright{
+    margin: 15px auto 15px;
+    color: #bbc2d5;
+    text-align: center;
+    font-size: 15px;
+}
+.footcopyright a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+.footspacing{
+    letter-spacing: 1px;
+}
+.footcontact{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.contactcontainer{
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    padding: 0 100px;
+}
 /* Responsivenesssss */
+@media (max-width: 1300px) {
+    .navmargin{
+        padding: 0;
+    }
+}
 @media (max-width: 1024px) {
     .slick-slide img {
         max-width: 734px;
         max-height: 495px;
     }
-
     .slick-center img {
         transform: scale(1.02);
+    }
+    .left-menu{
+        display: none !important;
+    }
+    .right-menu{
+        display: none !important;
+    }
+    .hamburger-menu{
+        display: block;
     }
 }
 
@@ -295,6 +366,9 @@ footer{
     .slick-center img {
         transform: scale(1.02);
     }
+    iframe{
+        max-width: 350px;
+    }
 }
 
 /* For very small screens */
@@ -309,5 +383,8 @@ footer{
 
     .slick-center img {
         transform: scale(1.02);
+    }
+    iframe{
+        max-width: 250px;
     }
 }
