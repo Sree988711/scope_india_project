@@ -1,0 +1,54 @@
+.courses_start{
+    background-color: transparent;
+}
+.courses_main_img{
+    padding-top: 250px;
+    padding-bottom: 150px;
+    background-color: #051a69;
+    background-image: url(../img/courses/snowpark-skis-headerbg2.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-attachment: fixed !important;
+    background-size: cover;
+}
+.gold-logo{
+    font-family: 'Times New Roman', Times, serif;
+    color: #fbba02;
+    font-size: 50px;
+    text-align: center;
+}
+.courses-logo h2{
+    color: #fff;
+    text-align: center;
+    font-family: "Viga", serif;
+    font-weight: 500;
+}
+.courses-logo h6{
+    color: #fff;
+    text-align: center;
+    font-family: "Viga", serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+.courses-logo h6 strong{
+    color: #fbba02;
+}
+.fivestarcourses{
+    color: #fff;
+    text-align: center;
+}
+/* Proper responsiveness */
+@media only screen and (min-width: 1240px){
+    .section-wrapper{
+        max-width: 1060px;
+    } 
+}
+@media only screen and (min-width: 960px) and (max-width: 1239px){
+    
+}
+@media only screen and (min-width: 768px) and (max-width: 959px){
+    
+}
+@media only screen and (max-width: 767px){
+
+}
