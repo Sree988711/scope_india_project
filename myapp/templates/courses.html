@@ -72,6 +72,37 @@
                 <img src="{% static "img\5star.png" %}" alt="5star" class='fivestar d-flex mx-auto'>
                 <p class="fivestarcourses">Google 4.9 * Rated Institute</p>
             </div>
+            <div class='section-wrapper container'>
+                <div class='container-fluid courses-cards'>
+                    {% comment %} Programming_courses {% endcomment %}
+                    <h3>Software Programming Courses</h3>
+                    <div class='row'>
+                        {%for items in details%}
+                        <div class='col course-col col-md-4'>
+                            <div class='container-fluid'>    
+                                <h6>
+                                    {{items.course_name}}
+                                </h6>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% comment %} Testing_Courses {% endcomment %}
+                    <h3>Software Testing Courses</h3>
+                    <div class='row'>
+                        {% for items in testing %}
+                        <div class='col course-col col-md-4'>
+                            <div class='container-fluid'>    
+                                <h6>
+                                    {{items.course_name}}
+                                </h6>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             {% lorem 100 b random %}
         </div>
     </div>
