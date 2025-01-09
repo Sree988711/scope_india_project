@@ -55,11 +55,81 @@
     font-family: "Poppins", Arial, Tahoma, sans-serif;
     font-size: 20px;
 }
+.courses-callback{
+    padding: 50px 0px;
+    background-color: #041a6b;
+}
+.courses-iframediv{
+    padding: 3%;
+    margin-top: -160px;
+    background-image: url(../img/si-call-back-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+.callback-v2 h2{
+    color: #000c81;
+    font-size: 34px;
+    line-height: 42px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 35px;
+}
+.callback-v2 p{
+    color: #041a6b;
+    margin-bottom: 30px
+}
+.footerstart-v2{
+    padding: 70px 0px;
+}
+.callback-end-img-div{
+    padding-top: 100px;
+    padding-bottom: 150px;
+    background-color: #041a6b;
+    background-image: url(../img/courses/snowpark-home-slider-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative
+}
+.callback-end-img-div h4{
+    text-align: center;
+    color: #19cf37;
+    font-size: 50px;
+    line-height: 25px;
+    font-weight: 700;
+    font-family: "Viga", Arial, Tahoma, sans-serif;
+
+}
+.callback-end-img-div h5{
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #fff;
+    margin-top: 15px;
+    font-family: "Viga", Arial, Tahoma, sans-serif;
+}
+.courses-bottom-decoration{
+    background-image: url(../img/snowpark-home-slide-decoration-bottomm.png);
+    height: 127px;
+    background-position: center bottom;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-repeat: repeat-x;
+
+}
 /* Proper responsiveness */
 @media only screen and (min-width: 1240px){
     .section-wrapper{
         max-width: 1060px;
-    } 
+    }
+    .footerstart-v2{
+        max-width: 1060px;
+    }
 }
 @media only screen and (min-width: 960px) and (max-width: 1239px){
     
