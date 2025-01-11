@@ -14,3 +14,5 @@ def course(request):
         'networking':networking,
         'other':other
         })
+def course_details(request):
+    return render(request,'course-details.html')

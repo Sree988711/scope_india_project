@@ -55,6 +55,9 @@
     font-family: "Poppins", Arial, Tahoma, sans-serif;
     font-size: 20px;
 }
+.course-col a{
+    text-decoration: none;
+}
 .courses-callback{
     padding: 50px 0px;
     background-color: #041a6b;

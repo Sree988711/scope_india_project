@@ -1,0 +1,104 @@
+.courses_main_img{
+    padding-top: 200px !important;
+}
+
+.details-gold-logo{
+    font-family: 'Viga', Times, serif;
+    color: #fbba02;
+    font-size: 55px;
+    text-align: center;
+}
+.details-logo h6{
+    color: #fff;
+    text-align: center;
+    font-family: "Viga", serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+.details-logo h6 strong{
+    color: #fbba02;
+}
+.h4border{
+    color: #fff;
+    border: 2.5px solid #5ead5e;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 11px;
+    margin: 0 auto 10px auto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 65%;
+    font-family: "Poppins", Arial, Tahoma, sans-serif;
+    text-align: center;
+}
+.batchdiv{
+    border: 2.5px solid #62bdb4;
+    background: rgba(97, 189, 180, 0.3);
+    color: #fff;
+    padding: 11px;
+    margin: 0 auto 10px auto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 65%;
+    font-family: "Poppins", Arial, Tahoma, sans-serif;
+    text-align: center;
+}
+.batchtitle{
+    color: #fff;
+    font-size: 28px;
+    margin-top: 15px;
+    font-family: "Viga", Arial, Tahoma, sans-serif;
+}
+.batchtable{
+    margin-bottom: 15px;
+    width: 62%;
+}
+.fivestarcourses{
+    color: #fff;
+    text-align: center;
+}
+.detail_afcallbackdiv{
+    background-color: #041a6b;
+}
+.detail_afcallbackdiv a{
+    text-decoration: none;
+}
+.detailbtn1,.detailbtn2,.detailbtn3{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 7px;
+}
+.detailbtn1 span{
+    color: #fff;
+    background-color: #7c62bd;
+    border: 1px solid #5c1eff;
+}
+.detailbtn2 span{
+    color: #fff;
+    background-color: #62bdb4;
+    border: 1px solid #35e9d7;
+}
+.detailbtn3 span{
+    color: #fff;
+    background-color: #5ead5e;
+    border: 1px solid #32d732;
+}
+.detailbtn1 span,.detailbtn2 span,.detailbtn3 span{
+    color: #fff;
+    padding: 11px 20px;
+    display: block;
+    float: left;
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+    width: 100%;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 4px;
+    font-family: "Poppins", Arial, Tahoma, sans-serif;
+}
+.callback-end-img-div{
+    background-attachment: scroll !important;
+}
