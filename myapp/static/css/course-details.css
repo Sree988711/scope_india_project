@@ -102,3 +102,20 @@
 .callback-end-img-div{
     background-attachment: scroll !important;
 }
+.details-col{
+    padding: 10px;
+}
+.details-col div{
+    background-color: #fff;
+    padding: 10px 15px;
+}
+.details-col h6{
+    margin: 0px 0px;
+    color: #071546;
+    font-family: "Poppins", Arial, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+.details-col a{
+    text-decoration: none;
+}

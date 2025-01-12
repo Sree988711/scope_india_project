@@ -61,13 +61,13 @@
         <div class='courses_main_img'>
             <div class='section-wrapper container details-logo'>
                 <h1 class='details-gold-logo'>
-                    Java Full Stack Internship
+                    {{ details.course_details_name }}
                 </h1>
                 <h6>
                     All Trainers at SCOPE INDIA are working professionals, Software Engineers, Networking Engineers, and Software Test Engineers of Suffix E Solutions with 
                     <br><strong>17 years of Industrial experience</strong>
                 </h6>
-                <h4 class="h4border">4 months course + 3 months on the Job Training</h4>
+                <h4 class="h4border">{{ details.course_duration }}</h4>
                 <div class="batchdiv">
                     <h4 class="batchtitle"> Next Batches</h4> 
                     <center>  
@@ -100,11 +100,11 @@
                 <div class='container-fluid courses-cards'>
                     <h3>Course Content</h3>
                     <div class='row'>
-                        {%for items in details%}
-                        <div class='col course-col col-md-4'>
+                        {% for content in details.get_course_contents %}
+                        <div class='col details-col col-md-4'>
                                 <div class='container-fluid'>
                                     <h6>
-                                        {{items.course_name}}
+                                        {{ content }}
                                     </h6>
                                 </div>
                         </div>
