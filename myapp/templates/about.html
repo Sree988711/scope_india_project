@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static "css/index.css" %}">
     <link rel="stylesheet" href="{% static "css\courses.css" %}">
     <link rel="stylesheet" href="{% static "css/course-details.css" %}">
+    <link rel="stylesheet" href="{% static "css/about.css" %}">
     {% comment %} font  {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +31,7 @@
                                 <a class="nav-link" aria-current="page" href="{% url "home" %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{% url "courses" %}">Courses</a>
+                                <a class="nav-link" href="{% url "courses" %}">Courses</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">Placement Cell</a>
@@ -45,7 +46,7 @@
         
                     <!-- Right-aligned section -->
                     <div class="d-flex align-items-center right-menu">
-                        <a class="nav-link" href="{% url "about" %}">Know SCOPE INDIA</a>
+                        <a class="nav-link active" href="#">Know SCOPE INDIA</a>
                         <a class="nav-link" href="#">Contact us</a>
                         <button class="register" type="submit">Register Now</button>
                     </div>
@@ -56,121 +57,39 @@
             </nav>
         </div>
     </header>
-{% comment %} Cousrse_details_Content {% endcomment %}
+
     <div class='container-fluid courses_start'>
-        <div class='courses_main_img'>
-            <div class='section-wrapper container details-logo'>
-                <h1 class='details-gold-logo'>
-                    {{ details.course_details_name }}
-                </h1>
-                <h6>
-                    All Trainers at SCOPE INDIA are working professionals, Software Engineers, Networking Engineers, and Software Test Engineers of Suffix E Solutions with 
-                    <br><strong>17 years of Industrial experience</strong>
-                </h6>
-                <h4 class="h4border">{{ details.course_duration }}</h4>
-                <div class="batchdiv">
-                    <h4 class="batchtitle"> Next Batches</h4> 
-                    <center>  
-                    <table class='batchtable'>
-                    <tbody>
-                        <tr>
-                            <td>9<sup>th</sup> January 2025: </td><td>Thampanoor TVM</td>
-                        </tr>
-                        <tr>
-                            <td>9<sup>th</sup> January 2025:</td><td> Technopark TVM</td>
-                        </tr>
-                        <tr>
-                            <td>16<sup>th</sup> January 2025:</td><td> Kochi</td>
-                        </tr>
-                        <tr>
-                            <td>30<sup>th</sup> December 2024:</td><td> Nagercoil</td>
-                        </tr>
-                        <tr>
-                            <td>9<sup>th</sup> January 2025:</td><td>Online</td>
-                        </tr>
-                    </tbody>
-                    </table>
-                    </center>   
-                </div>
+        <div class='about_main_img'>
+            <div class='section-wrapper container about_content'>
+                <h1>SCOPE INDIA, your career partner!</h1>
+                <h2>One of India's best Training destinations for Software, Networking, and Cloud Computing courses with 17 years of Industrial experience.</h2>
+                <p>Software, Networking, and Cloud Professional Education Centre in Kerala and Tamil Nadu from <strong>Suffix E Solutions</strong> with WORKING PROFESSIONALS oriented
+                    on-the-job TRAINING model. SCOPE INDIA provides courses for <strong>Software Programming</strong> in Python
+                    (Data Science | Artificial Intelligence | Machine Learning | Deep Learning, Data Analytics),
+                    Java, PHP, .Net, MERN,<strong>Software Testing</strong> Manual and Automation, <strong>Cloud Computing</strong> (AWS | Azure),
+                    <strong>Server Administration</strong> (MicroSoft MCSE | Linux RHCE), Networking (CCNA), <strong>DevOps</strong>,
+                    <strong>Mobile App Development</strong> in Flutter, and <strong>Digital Marketing</strong>. A Training with a 100% Trusted Job-Based Internship Model.
+                    SCOPE INDIA has a Strong Placement Cell that provides jobs to thousands of students annually. We assure you,
+                    you won't regret it after training from SCOPE INDIA!</p>
+                <p>This is how SCOPE INDIA can support both newbies and those experienced in the industry to upgrade their skills.</p>
                 <img src="{% static "img\5star.png" %}" alt="5star" class='fivestar d-flex mx-auto'>
-                <p class="fivestarcourses">Google 4.9 * Rated Institute</p>
+                <span class='googleabout'>Google 4.9 * Rated Institute</span>
             </div>
-            {% comment %} Under construction {% endcomment %}
-            <div class='section-wrapper container'>
-                <div class='container-fluid courses-cards'>
-                    <h3>Course Content</h3>
-                    <div class='row'>
-                        {% for content in details.get_course_contents %}
-                        <div class='col details-col col-md-4'>
-                                <div class='container-fluid'>
-                                    <h6>
-                                        {{ content }}
-                                    </h6>
-                                </div>
-                        </div>
-                        {% endfor %}
-                    </div>
+            <div class='container-fluid'>
+                <div class='container section-wrapper'>
+                    <a href="#" class='detailbtn1'>
+                        <span>Recent Placements</span>
+                    </a>
+                    <a href="#" class='detailbtn2'>
+                        <span>Courses</span>
+                    </a>
+                    <a href="#" class='detailbtn3'>
+                        <span>Register Now!</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-{% comment %} under construction above {% endcomment %}
-
-    <div class='container-fluid courses-callback'>
-        <div class='section-wrapper container'>
-            <div class='courses-iframediv container-fluid'>
-                <div class='row'>
-
-                    <div class='col'>
-                        <div class="container-fluid colleft">
-                            <iframe width="480" height="480" src="https://www.youtube.com/embed/0BIaDVnYp2A" title="Free Background Music For Youtube Videos No Copyright Download for Content Creators" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="col colright">
-                        <div class="container-fluid callback-v2">
-                            <h2>We are open 365 days</h2>
-                            <p>
-                                SCOPE INDIA is open 7/24 hrs to talk to you and listen to your queries.
-                            </p>
-
-                            <div class="container-fluid contactlist">
-                                <ul>
-                                    <li>
-                                        <h3>GET A FREE CALL BACK</h3>
-                                    </li>
-                                    <li>
-                                        <input type="text" name="" id="" placeholder="Enter your name" class="inputstyle"/>
-                                    </li>
-                                    <li>
-                                        <input type="tel" name="" id="" placeholder="Enter your phone no." class="inputstyle"/>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="inputbtn">Call Me</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% comment %} after callback  {% endcomment %}
-    <div class='container-fluid detail_afcallbackdiv'>
-        <div class='container section-wrapper'>
-            <a href="#" class='detailbtn1'>
-                <span>Recent Placements</span>
-            </a>
-            <a href="#" class='detailbtn2'>
-                <span>More Courses >></span>
-            </a>
-            <a href="#" class='detailbtn3'>
-                <span>Register Now!</span>
-            </a>
-        </div>
-    </div>
-
     <div class='container-fluid callback-end-img-div'>
         <div class='section-wrapper container'>
             <div class="row">

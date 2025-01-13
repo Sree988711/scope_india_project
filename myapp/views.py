@@ -33,3 +33,5 @@ def course_details(request,id,category):
     return render(request,'course-details.html',{
         'details':details
     })
+def about(request):
+    return render(request,'about.html')
