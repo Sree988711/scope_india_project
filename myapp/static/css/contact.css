@@ -1,0 +1,79 @@
+.contact_main_img{
+    padding-top: 250px;
+    padding-bottom: 40px;
+    background-color: #051a69;
+    background-image: url(../img/courses/snowpark-skis-headerbg2.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+.contact_content h1{
+    color: #fbba02;
+     text-align: center;
+     font-family: "Viga", Arial, Tahoma, sans-serif;
+     font-size: 55px;
+     line-height: 65px;
+     font-weight: 500;
+     letter-spacing: 0px;
+}
+.contact_content h2{
+    color: #fff;
+    font-size: 34px;
+    line-height: 42px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    text-align: center;
+    font-family: "Viga", Arial, Tahoma, sans-serif;
+}
+.contact-callback{
+    padding: 3%;
+    background-image: url(../img/si-call-back-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+.contact-margin{
+    margin-top: 50px;
+}
+.Viga{
+    font-family: "Viga", Arial, Tahoma, sans-serif;
+}
+.poppins{
+    font-family: "Poppins", Arial, Tahoma, sans-serif;
+}
+.locationsdiv{
+    background-color: #051a69;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    color: #fff;
+    position: relative;
+}
+.locationpadding{
+    background-color: #041a6b!important;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.contact-ul-style{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.contact-ul-style li a{
+    text-decoration: none;
+    margin: 0px;
+    color: white;
+    line-height: 25px;
+}
+.contact-ul-style li span{
+    margin: 0px;
+    color: white;
+}
+.contact-ul-style li i{
+    margin-left: 15px;
+    margin-right: 5px;
+}
+.specialcol{
+    margin-left: 25%;
+}
