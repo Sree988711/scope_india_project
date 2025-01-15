@@ -43,6 +43,7 @@ header{
     display: inline !important;
     padding: 6px 10px !important;
     background-image: linear-gradient(#f2b42d, #fd0300);
+    text-decoration: none;
 }
 .hamburger-menu{
     width: 35px;
@@ -396,6 +397,7 @@ footer{
     font-weight: 600;
     padding: 6px 10px;
 }
+
 /* Responsivenesssss */
 /* @media (max-width: 1300px) {
     .navmargin{

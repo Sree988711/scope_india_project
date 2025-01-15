@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static "css/course-details.css" %}">
     <link rel="stylesheet" href="{% static "css/about.css" %}">
     <link rel="stylesheet" href="{% static "css/contact.css" %}">
+    <link rel="stylesheet" href="{% static "css/register.css" %}">
     {% comment %} font  {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +50,8 @@
                     <!-- Right-aligned section -->
                     <div class="d-flex align-items-center right-menu">
                         <a class="nav-link" href="{% url "about" %}">Know SCOPE INDIA</a>
-                        <a class="nav-link active" href="{% url "contact" %}">Contact us</a>
-                        <a class="register" href="{% url 'register' %}">Register Now</a>
+                        <a class="nav-link" href="{% url "contact" %}">Contact us</a>
+                        <a class="register" href="{% url "register" %}">Register Now</a>
                     </div>
                     <div class="hamburgercontainer">
                     <div class="hamburger-menu"></div>
@@ -61,49 +62,110 @@
     </header>
 
     <div class='container-fluid courses_start'>
-        <div class='contact_main_img'>
-            <div class='section-wrapper container contact_content'>
-                <h1>SCOPE INDIA is open 365 days a year</h1>
-                <h2>Let's discuss your career, 24/7 free Consultation</h2>
-                <img src="{% static "img\5star.png" %}" alt="5star" class='fivestar d-flex mx-auto'>
-                <span class='googleabout'>Google 4.9 * Rated Institute</span>
+        <div class='register_main_img'>
+            <div class='section-wrapper container register_content'>
+                <h1>Registration</h1>
+                <h2>It's just a matter of 80 days to an IT job!</h2>
             </div>
             <div class='container-fluid'>
-                <div class='container section-wrapper contact-callback'>
+                <div class='container section-wrapper register-callback'>
                     <div class='row'>
-                        <div class='col'>
-                            <div class="container-fluid colleft">
-                                <iframe width="480" height="480" src="https://www.youtube.com/embed/0BIaDVnYp2A" title="Free Background Music For Youtube Videos No Copyright Download for Content Creators" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
+                        <div class='col reg-colleft'>
+                            <ul>
+                                <li>
+                                    <label for="" class='col-block'>Full Name (required)</label>
+                                    <input type="text" name="" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Date of Birth (required)</label>
+                                    <input type="date" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Gender (required)</label>
+                                    <label for=""><input type="radio" name="" id=""> Male</label>
+                                    <label for=""><input type="radio" name="" id=""> Female</label>
+                                    <label for=""><input type="radio" name="" id=""> Others</label>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Educational Qualification</label>
+                                    <input type="text" name="" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Choose your course (required)</label>
+                                    <select name="" class='w-100 regi-multichoice'>
+                                        <option value="">Hi</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Mobile Number (required)</label>
+                                    <input type="tel" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Email (required)</label>
+                                    <input type="email" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Guardian's Mobile</label>
+                                    <input type="tel" name="" class='w-100'>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>Training Mode (required)</label>
+                                    <label for=""><input type="radio" name="" id="">Live online</label>
+                                    <label for=""><input type="radio" name="" id=""> Classroom</label>
+                                </li>
+                                <li>
+                                    <label for="" class='col-block'>SCOPE INDIA Location (required)</label>
+                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Technopark TVM</label>
+                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Thampanoor TVM</label>
+                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Kochi</label>
+                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Nagercoil</label>
+                                    <label for=""><input type="radio" name="" id=""> Online</label>
+                                </li>
+                            </ul>
                         </div>
                         <div class='col'>
                             <div class="container-fluid">
-                                <div class="container-fluid contactlist">
+                                <div class="container-fluid reg-colright">
                                     <ul>
                                         <li>
-                                            <h3 class='Viga'>GET A FREE CALL BACK</h3>
+                                            <label for="" class='col-block'>Guardian's Name</label>
+                                            <input type="text" name="" class='w-100'>
                                         </li>
                                         <li>
-                                            <input type="text" name="" id="" placeholder="Enter your name" class="inputstyle poppins"/>
+                                            <label for="" class='col-block'>Guardian's Occupation</label>
+                                            <input type="text" class='w-100'>
                                         </li>
                                         <li>
-                                            <input type="tel" name="" id="" placeholder="Enter your phone no." class="inputstyle poppins"/>
+                                            <label for="" class='col-block'>Preferred Training Timings (required)</label>
+                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 8am - 10am</label>
+                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 9am - 1pm</label>
+                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 1pm - 6pm</label>
+                                            <label for="" class='col-block'><input type="checkbox" name="" > Between 6pm - 10pm</label>
                                         </li>
                                         <li>
-                                            <button type="button" class="inputbtn poppins">Call Me</button>
+                                            <label for="" class='col-block'>Address</label>
+                                            <input type="text" name="" class='w-100'>
+                                        </li>
+                                        <li>
+                                            <label for="" class='col-block'>Country</label>
+                                            <input type="text" name="" class='w-100'>
+                                        </li>
+                                        <li>
+                                            <label for="" class='col-block'>State</label>
+                                            <input type="text" class='w-100'>
+                                        </li>
+                                        <li>
+                                            <label for="" class='col-block'>City</label>
+                                            <input type="text" class='w-100'>
+                                        </li>
+                                        <li>
+                                            <label for="" class='col-block'>PIN/Zip Code</label>
+                                            <input type="text" name="" class='w-100'>
+                                        </li>
+                                        <li>
+                                            <button class="regi-registerbtn">Complete Registration &gt;&gt; </button>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class='container-fluid contact-margin'>
-                                    <a href="#" class='detailbtn1'>
-                                        <span>Recent Placements</span>
-                                    </a>
-                                    <a href="#" class='detailbtn2'>
-                                        <span>Courses</span>
-                                    </a>
-                                    <a href="#" class='detailbtn3'>
-                                        <span>Register Now!</span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
