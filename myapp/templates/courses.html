@@ -77,12 +77,12 @@
                     {% comment %} Programming_courses {% endcomment %}
                     <h3>Software Programming Courses</h3>
                     <div class='row'>
-                        {%for items in details%}
+                        {% for items in software %}
                         <div class='col course-col col-md-4'>
-                            <a href="{% url "detailx" 'programming' items.id %}">
-                                <div class='container-fluid'>
+                            <a href="{% url "detailx" items.parent_id items.id %}">
+                            <div class='container-fluid'>
                                     <h6>
-                                        {{items.course_name}}
+                                        {{items.courses_name}}
                                     </h6>
                                 </div>
                             </a>
@@ -94,10 +94,10 @@
                     <div class='row'>
                         {% for items in testing %}
                         <div class='col course-col col-md-4'>
-                            <a href="{% url "detailx" 'testing' items.id %}">
+                            <a href="{% url "detailx" items.parent_id items.id %}">
                                 <div class='container-fluid'>    
                                     <h6>
-                                        {{items.course_name}}
+                                        {{items.courses_name}}
                                     </h6>
                                 </div>
                             </a>
@@ -109,25 +109,25 @@
                     <div class='row'>
                         {% for items in networking %}
                         <div class='col course-col col-md-4'>
-                            <a href="{% url "detailx" 'networking' items.id %}">
+                            <a href="{% url "detailx" items.parent_id items.id %}">
                                 <div class='container-fluid'>    
                                     <h6>
-                                        {{items.course_name}}
+                                        {{items.courses_name}}
                                     </h6>
                                 </div>
                             </a>
                         </div>
                         {% endfor %}
                     </div>
-                    {% comment %} Other_Courses      {% endcomment %}
+                    {% comment %} Other_Courses {% endcomment %}
                     <h3>Other Courses</h3>
                     <div class='row'>
                         {% for items in other %}
                         <div class='col course-col col-md-4'>
-                            <a href="{% url "detailx" 'other' items.id %}">
+                            <a href="{% url "detailx" items.parent_id items.id %}">
                                 <div class='container-fluid'>    
                                     <h6>
-                                        {{items.course_name}}
+                                        {{items.courses_name}}
                                     </h6>
                                 </div>
                             </a>

@@ -1,50 +1,20 @@
 from django.db import models
 
 # Create your models here.
-class courses(models.Model):
-    course_name=models.CharField(max_length=50)
-    course_details_name=models.CharField(max_length=50,default='CourseX')
-    course_duration=models.CharField(max_length=50,default='4 months course + 3 months on the Job Training')
-    course_contents=models.TextField(blank=True)
-    class Meta:
-        verbose_name_plural='Software Courses'
-    def __str__(self):
-        return self.course_name
-    def get_course_contents(self):
-        return self.course_contents.split(",") if self.course_contents else []
-    
-class testing_courses(models.Model):
-    course_name=models.CharField(max_length=50)
-    course_details_name=models.CharField(max_length=50,default='CourseX')
-    course_duration=models.CharField(max_length=50,default='4 months course + 3 months on the Job Training')
-    testing_contents=models.TextField(blank=True)
-    class Meta:
-        verbose_name_plural='Testing Courses'
-    def __str__(self):
-        return self.course_name
-    def get_course_contents(self):
-        return self.testing_contents.split(",") if self.testing_contents else []
 
-class networking_courses(models.Model):
-    course_name=models.CharField(max_length=50)
-    course_details_name=models.CharField(max_length=50,default='CourseX')
-    course_duration=models.CharField(max_length=50,default='4 months course + 3 months on the Job Training')
-    networking_contents=models.TextField(blank=True)
-    class Meta:
-        verbose_name_plural='Networking Courses'
-    def __str__(self):
-        return self.course_name
-    def get_course_contents(self):
-        return self.networking_contents.split(",") if self.networking_contents else []
+# Transition to mysql
 
-class other_courses(models.Model):
-    course_name=models.CharField(max_length=50)
-    course_details_name=models.CharField(max_length=50,default='CourseX')
-    course_duration=models.CharField(max_length=50,default='4 months course + 3 months on the Job Training')
-    other_contents=models.TextField(blank=True)
-    class Meta:
-        verbose_name_plural='Other Courses'
+from django.db import models
+
+class Courses(models.Model):
+    id = models.AutoField(primary_key=True)  # Auto-incrementing primary key
+    courses_name = models.TextField(null=False)
+    parent_id = models.IntegerField(null=False)
+    details_name = models.TextField(null=True)
+    duration = models.TextField(default='4 months course + 3 months on the Job Training',null=True)
+    content = models.TextField(null=True)
+
     def __str__(self):
-        return self.course_name
+        return self.courses_name
     def get_course_contents(self):
-        return self.other_contents.split(',') if self.other_contents else []
+        return self.content.split(';') if self.content else []
