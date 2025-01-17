@@ -69,107 +69,117 @@
             </div>
             <div class='container-fluid'>
                 <div class='container section-wrapper register-callback'>
-                    <div class='row'>
-                        <div class='col reg-colleft'>
-                            <ul>
-                                <li>
-                                    <label for="" class='col-block'>Full Name (required)</label>
-                                    <input type="text" name="" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Date of Birth (required)</label>
-                                    <input type="date" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Gender (required)</label>
-                                    <label for=""><input type="radio" name="" id=""> Male</label>
-                                    <label for=""><input type="radio" name="" id=""> Female</label>
-                                    <label for=""><input type="radio" name="" id=""> Others</label>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Educational Qualification</label>
-                                    <input type="text" name="" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Choose your course (required)</label>
-                                    <select name="" class='w-100 regi-multichoice'>
-                                        <option value="">Hi</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Mobile Number (required)</label>
-                                    <input type="tel" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Email (required)</label>
-                                    <input type="email" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Guardian's Mobile</label>
-                                    <input type="tel" name="" class='w-100'>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>Training Mode (required)</label>
-                                    <label for=""><input type="radio" name="" id="">Live online</label>
-                                    <label for=""><input type="radio" name="" id=""> Classroom</label>
-                                </li>
-                                <li>
-                                    <label for="" class='col-block'>SCOPE INDIA Location (required)</label>
-                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Technopark TVM</label>
-                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Thampanoor TVM</label>
-                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Kochi</label>
-                                    <label for=""><input type="radio" name="" class='marginbtm5px'> Nagercoil</label>
-                                    <label for=""><input type="radio" name="" id=""> Online</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class='col'>
-                            <div class="container-fluid">
-                                <div class="container-fluid reg-colright">
-                                    <ul>
-                                        <li>
-                                            <label for="" class='col-block'>Guardian's Name</label>
-                                            <input type="text" name="" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>Guardian's Occupation</label>
-                                            <input type="text" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>Preferred Training Timings (required)</label>
-                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 8am - 10am</label>
-                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 9am - 1pm</label>
-                                            <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 1pm - 6pm</label>
-                                            <label for="" class='col-block'><input type="checkbox" name="" > Between 6pm - 10pm</label>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>Address</label>
-                                            <input type="text" name="" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>Country</label>
-                                            <input type="text" name="" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>State</label>
-                                            <input type="text" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>City</label>
-                                            <input type="text" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <label for="" class='col-block'>PIN/Zip Code</label>
-                                            <input type="text" name="" class='w-100'>
-                                        </li>
-                                        <li>
-                                            <button class="regi-registerbtn">Complete Registration &gt;&gt; </button>
-                                        </li>
-                                    </ul>
+                    <form action="#" method="get">
+                        <div class='row'>
+                            <div class='col reg-colleft'>
+                                <ul>
+                                    <li>
+                                        <label for="" class='col-block'>Full Name (required)</label>
+                                        <input type="text" name="" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Date of Birth (required)</label>
+                                        <input type="date" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Gender (required)</label>
+                                        <label for=""><input type="radio" name="gender" id=""> Male</label>
+                                        <label for=""><input type="radio" name="gender" id=""> Female</label>
+                                        <label for=""><input type="radio" name="gender" id=""> Others</label>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Educational Qualification</label>
+                                        <input type="text" name="" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Choose your course (required)</label>
+                                        <select name="" class="w-100 regi-multichoice">
+                                            <option value="">Choose your course!</option>
+                                            {% for group in parent_child %}
+                                            <optgroup label="{{ group.parent.courses_name }}">
+                                                {% for child in group.children %}
+                                                <option value="{{ child.id }}">{{ child.courses_name }}</option>
+                                                {% endfor %}
+                                            </optgroup>
+                                            {% endfor %}
+                                        </select>
+                                        
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Mobile Number (required)</label>
+                                        <input type="tel" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Email (required)</label>
+                                        <input type="email" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Guardian's Mobile</label>
+                                        <input type="tel" name="" class='w-100'>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>Training Mode (required)</label>
+                                        <label for=""><input type="radio" name="mode" id=""> Live online</label>
+                                        <label for=""><input type="radio" name="mode" id=""> Classroom</label>
+                                    </li>
+                                    <li>
+                                        <label for="" class='col-block'>SCOPE INDIA Location (required)</label>
+                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Technopark TVM</label>
+                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Thampanoor TVM</label>
+                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Kochi</label>
+                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Nagercoil</label>
+                                        <label for=""><input type="radio" name="location" id=""> Online</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class='col'>
+                                <div class="container-fluid">
+                                    <div class="container-fluid reg-colright">
+                                        <ul>
+                                            <li>
+                                                <label for="" class='col-block'>Guardian's Name</label>
+                                                <input type="text" name="" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>Guardian's Occupation</label>
+                                                <input type="text" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>Preferred Training Timings (required)</label>
+                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 8am - 10am</label>
+                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 9am - 1pm</label>
+                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 1pm - 6pm</label>
+                                                <label for="" class='col-block'><input type="checkbox" name="" > Between 6pm - 10pm</label>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>Address</label>
+                                                <input type="text" name="" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>Country</label>
+                                                <input type="text" name="" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>State</label>
+                                                <input type="text" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>City</label>
+                                                <input type="text" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <label for="" class='col-block'>PIN/Zip Code</label>
+                                                <input type="text" name="" class='w-100'>
+                                            </li>
+                                            <li>
+                                                <button class="regi-registerbtn">Complete Registration &gt;&gt; </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -338,22 +348,32 @@
                 <p class="footdesc footspacing">An ISO 9001:2015 Certified Company</p>
                 <p class="footcopyright footspacing">All Rights Reserved<a href="#"> Suffix E Solutions </a>&copy; 2007-2025</p>
                 <div class="container contactcontainer">
-                    <div class="row">
-                        <div class="col footcontact">
-                            9745936073 (TPK) 
-                        </div>
-                        <div class="col footcontact">
-                            9745936073 (TVM)  
-                        </div>
-                        <div class="col footcontact">
-                            7592939481 (EKM) 
-                        </div>
-                        <div class="col footcontact">
-                            8075536185 (NGL) 
-                        </div>
-                        <div class="col footcontact">
-                            info@scopeindia.org
-                        </div>
+                    <div class="row footcontactv2">
+                        <a href="tel:9745936073" class='col'>
+                            <div class="footcontact">
+                                9745936073 (TPK) 
+                            </div>
+                        </a>
+                        <a href="tel:9745936073" class='col'>
+                            <div class="footcontact">
+                                9745936073 (TVM)  
+                            </div>
+                        </a>
+                        <a href="tel:7592939481" class='col'>
+                            <div class="footcontact">
+                                7592939481 (EKM) 
+                            </div>
+                        </a>
+                        <a href="tel:8075536185" class='col'>
+                            <div class="footcontact">
+                                8075536185 (NGL) 
+                            </div>
+                        </a>
+                        <a href="mailto:info@scopeindia.org" class='col'>
+                            <div class="footcontact">
+                                info@scopeindia.org
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -371,19 +391,19 @@
                         <a href="{% url "home" %}">Home</a>
                     </li>
                     <li>
-                        <a href="#" class='active'>Courses</a>
+                        <a href="{% url "courses" %}">Courses</a>
                     </li>
                     <li>
                         <a href="#">Placement Cell</a>
                     </li>
                     <li>
-                        <a href="#">Know SCOPE INDIA</a>
+                        <a href="{% url "about" %}">Know SCOPE INDIA</a>
                     </li>
                     <li>
-                        <a href="#">Contact us</a>
+                        <a href="{% url "contact" %}">Contact us</a>
                     </li>
                     <li>
-                        <button>Register Now</button>
+                        <a href="{% url "register" %}"><button>Register Now</button></a>
                     </li>
                 </ul>
             </nav>

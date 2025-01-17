@@ -32,4 +32,15 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 def register(request):
-    return render(request,'register.html')
+    parents=Courses.objects.filter(parent_id=0)
+    parent_child=[
+        {
+            'parent':parent,
+            'children':Courses.objects.filter(parent_id=parent.id)
+        }
+        for parent in parents
+    ]
+    return render(request,'register.html',{
+        'parents':parents,
+        'parent_child':parent_child
+    })

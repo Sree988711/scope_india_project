@@ -333,6 +333,9 @@ footer{
     color: rgb(255, 255, 255);
     text-align: center;
 }
+.footcontactv2 a{
+    text-decoration: none;
+}
 .contactcontainer{
     /* padding-left: 100px;
     padding-right: 100px; */

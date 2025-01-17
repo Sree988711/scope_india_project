@@ -77,13 +77,13 @@
             </div>
             <div class='container-fluid'>
                 <div class='container section-wrapper'>
-                    <a href="#" class='detailbtn1'>
+                    <a href="{% url "home" %}" class='detailbtn1'>
                         <span>Recent Placements</span>
                     </a>
-                    <a href="#" class='detailbtn2'>
+                    <a href="{% url "courses" %}" class='detailbtn2'>
                         <span>Courses</span>
                     </a>
-                    <a href="#" class='detailbtn3'>
+                    <a href="{% url "register" %}" class='detailbtn3'>
                         <span>Register Now!</span>
                     </a>
                 </div>
@@ -121,22 +121,32 @@
                 <p class="footdesc footspacing">An ISO 9001:2015 Certified Company</p>
                 <p class="footcopyright footspacing">All Rights Reserved<a href="#"> Suffix E Solutions </a>&copy; 2007-2025</p>
                 <div class="container contactcontainer">
-                    <div class="row">
-                        <div class="col footcontact">
-                            9745936073 (TPK) 
-                        </div>
-                        <div class="col footcontact">
-                            9745936073 (TVM)  
-                        </div>
-                        <div class="col footcontact">
-                            7592939481 (EKM) 
-                        </div>
-                        <div class="col footcontact">
-                            8075536185 (NGL) 
-                        </div>
-                        <div class="col footcontact">
-                            info@scopeindia.org
-                        </div>
+                    <div class="row footcontactv2">
+                        <a href="tel:9745936073" class='col'>
+                            <div class="footcontact">
+                                9745936073 (TPK) 
+                            </div>
+                        </a>
+                        <a href="tel:9745936073" class='col'>
+                            <div class="footcontact">
+                                9745936073 (TVM)  
+                            </div>
+                        </a>
+                        <a href="tel:7592939481" class='col'>
+                            <div class="footcontact">
+                                7592939481 (EKM) 
+                            </div>
+                        </a>
+                        <a href="tel:8075536185" class='col'>
+                            <div class="footcontact">
+                                8075536185 (NGL) 
+                            </div>
+                        </a>
+                        <a href="mailto:info@scopeindia.org" class='col'>
+                            <div class="footcontact">
+                                info@scopeindia.org
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -154,19 +164,19 @@
                         <a href="{% url "home" %}">Home</a>
                     </li>
                     <li>
-                        <a href="#" class='active'>Courses</a>
+                        <a href="{% url "courses" %}">Courses</a>
                     </li>
                     <li>
                         <a href="#">Placement Cell</a>
                     </li>
                     <li>
-                        <a href="#">Know SCOPE INDIA</a>
+                        <a href="{% url "about" %}" class='active'>Know SCOPE INDIA</a>
                     </li>
                     <li>
-                        <a href="#">Contact us</a>
+                        <a href="{% url "contact" %}">Contact us</a>
                     </li>
                     <li>
-                        <button>Register Now</button>
+                        <a href="{% url "register" %}"><button>Register Now</button></a>
                     </li>
                 </ul>
             </nav>
