@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Courses
+from .models import Registration
 # from .models import courses,testing_courses,networking_courses,other_courses
 # Create your views here.
 def index(request):
@@ -40,6 +41,51 @@ def register(request):
         }
         for parent in parents
     ]
+
+    if request.method == 'POST':
+        # Collect data from the form
+        full_name = request.POST.get('full_name')
+        dob = request.POST.get('dob')
+        gender = request.POST.get('gender')
+        qualification = request.POST.get('qualification')
+        course = request.POST.get('course')
+        mobile = request.POST.get('mobile')
+        email = request.POST.get('email')
+        guardian_mobile = request.POST.get('guardian_mobile')
+        mode = request.POST.get('mode')
+        location = request.POST.get('location')
+        guardian_name = request.POST.get('guardian_name')
+        guardian_occupation = request.POST.get('guardian_occupation')
+        preferred_timings = request.POST.getlist('preferred_timings')
+        address = request.POST.get('address')
+        country = request.POST.get('country')
+        state = request.POST.get('state')
+        city = request.POST.get('city')
+        pin = request.POST.get('pin')
+
+        registration = Registration(
+            full_name=full_name,
+            dob=dob,
+            gender=gender,
+            qualification=qualification,
+            course=course,
+            mobile=mobile,
+            email=email,
+            guardian_mobile=guardian_mobile,
+            mode=mode,
+            location=location,
+            guardian_name=guardian_name,
+            guardian_occupation=guardian_occupation,
+            preferred_timings=", ".join(preferred_timings),
+            address=address,
+            country=country,
+            state=state,
+            city=city,
+            pin=pin
+        )
+        registration.save()
+        return HttpResponse("Registration Successful")
+    
     return render(request,'register.html',{
         'parents':parents,
         'parent_child':parent_child

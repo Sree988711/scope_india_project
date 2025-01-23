@@ -69,36 +69,37 @@
             </div>
             <div class='container-fluid'>
                 <div class='container section-wrapper register-callback'>
-                    <form action="#" method="get">
+                    <form action="#" method="POST">
+                        {% csrf_token %}
                         <div class='row'>
                             <div class='col reg-colleft'>
                                 <ul>
                                     <li>
-                                        <label for="" class='col-block'>Full Name (required)</label>
-                                        <input type="text" name="" class='w-100'>
+                                        <label for="full_name" class='col-block'>Full Name (required)</label>
+                                        <input type="text" name="full_name" class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Date of Birth (required)</label>
-                                        <input type="date" class='w-100'>
+                                        <label for="dob" class='col-block'>Date of Birth (required)</label>
+                                        <input type="date" name='dob' class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Gender (required)</label>
-                                        <label for=""><input type="radio" name="gender" id=""> Male</label>
-                                        <label for=""><input type="radio" name="gender" id=""> Female</label>
-                                        <label for=""><input type="radio" name="gender" id=""> Others</label>
+                                        <label for="gender" class='col-block'>Gender (required)</label>
+                                        <label><input type="radio" name="gender" value='Male'> Male</label>
+                                        <label><input type="radio" name="gender" value='Female'> Female</label>
+                                        <label><input type="radio" name="gender" value='Others'> Others</label>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Educational Qualification</label>
-                                        <input type="text" name="" class='w-100'>
+                                        <label for="qualification" class='col-block'>Educational Qualification</label>
+                                        <input type="text" name="qualification" class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Choose your course (required)</label>
-                                        <select name="" class="w-100 regi-multichoice">
+                                        <label for="course" class='col-block'>Choose your course (required)</label>
+                                        <select name="course" class="w-100 regi-multichoice">
                                             <option value="">Choose your course!</option>
                                             {% for group in parent_child %}
                                             <optgroup label="{{ group.parent.courses_name }}">
                                                 {% for child in group.children %}
-                                                <option value="{{ child.id }}">{{ child.courses_name }}</option>
+                                                <option value="{{ child.courses_name }}">{{ child.courses_name }}</option>
                                                 {% endfor %}
                                             </optgroup>
                                             {% endfor %}
@@ -106,29 +107,29 @@
                                         
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Mobile Number (required)</label>
-                                        <input type="tel" class='w-100'>
+                                        <label for="mobile" class='col-block'>Mobile Number (required)</label>
+                                        <input name='mobile' type="tel" class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Email (required)</label>
-                                        <input type="email" class='w-100'>
+                                        <label for="email" class='col-block'>Email (required)</label>
+                                        <input name='email' type="email" class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Guardian's Mobile</label>
-                                        <input type="tel" name="" class='w-100'>
+                                        <label for="guardian_mobile" class='col-block'>Guardian's Mobile</label>
+                                        <input type="tel" name="guardian_mobile" class='w-100'>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>Training Mode (required)</label>
-                                        <label for=""><input type="radio" name="mode" id=""> Live online</label>
-                                        <label for=""><input type="radio" name="mode" id=""> Classroom</label>
+                                        <label for="mode" class='col-block'>Training Mode (required)</label>
+                                        <label><input type="radio" name="mode" value='Live online'> Live online</label>
+                                        <label><input type="radio" name="mode" value='Classroom'> Classroom</label>
                                     </li>
                                     <li>
-                                        <label for="" class='col-block'>SCOPE INDIA Location (required)</label>
-                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Technopark TVM</label>
-                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Thampanoor TVM</label>
-                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Kochi</label>
-                                        <label for=""><input type="radio" name="location" class='marginbtm5px'> Nagercoil</label>
-                                        <label for=""><input type="radio" name="location" id=""> Online</label>
+                                        <label for="location" class='col-block'>SCOPE INDIA Location (required)</label>
+                                        <label><input type="radio" name="location" class='marginbtm5px' value='Technopark TVM'> Technopark TVM</label>
+                                        <label><input type="radio" name="location" class='marginbtm5px' value='Thampanoor TVM'> Thampanoor TVM</label>
+                                        <label><input type="radio" name="location" class='marginbtm5px' value='Kochi'> Kochi</label>
+                                        <label><input type="radio" name="location" class='marginbtm5px' value='Nagercoil'> Nagercoil</label>
+                                        <label><input type="radio" name="location" value='Online'> Online</label>
                                     </li>
                                 </ul>
                             </div>
@@ -137,42 +138,42 @@
                                     <div class="container-fluid reg-colright">
                                         <ul>
                                             <li>
-                                                <label for="" class='col-block'>Guardian's Name</label>
-                                                <input type="text" name="" class='w-100'>
+                                                <label for="guardian_name" class='col-block'>Guardian's Name</label>
+                                                <input type="text" name="guardian_name" class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>Guardian's Occupation</label>
-                                                <input type="text" class='w-100'>
+                                                <label for="guardian_occupation" class='col-block'>Guardian's Occupation</label>
+                                                <input type="text" name='guardian_occupation' class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>Preferred Training Timings (required)</label>
-                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 8am - 10am</label>
-                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 9am - 1pm</label>
-                                                <label for="" class='col-block'><input type="checkbox" name="" class='marginbtm5px'> Between 1pm - 6pm</label>
-                                                <label for="" class='col-block'><input type="checkbox" name="" > Between 6pm - 10pm</label>
+                                                <label for="preferred_timings" class='col-block'>Preferred Training Timings (required)</label>
+                                                <label class='col-block'><input type="checkbox" name="preferred_timings" class='marginbtm5px' value='8am - 10am'> Between 8am - 10am</label>
+                                                <label class='col-block'><input type="checkbox" name="preferred_timings" class='marginbtm5px' value='9am - 1pm'> Between 9am - 1pm</label>
+                                                <label class='col-block'><input type="checkbox" name="preferred_timings" class='marginbtm5px' value='1pm - 6pm'> Between 1pm - 6pm</label>
+                                                <label class='col-block'><input type="checkbox" name="preferred_timings" value='6pm - 10pm'> Between 6pm - 10pm</label>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>Address</label>
-                                                <input type="text" name="" class='w-100'>
+                                                <label for="address" class='col-block'>Address</label>
+                                                <input type="text" name="address" class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>Country</label>
-                                                <input type="text" name="" class='w-100'>
+                                                <label for="country" class='col-block'>Country</label>
+                                                <input type="text" name="country" class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>State</label>
-                                                <input type="text" class='w-100'>
+                                                <label for="state" class='col-block'>State</label>
+                                                <input type="text" name='state' class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>City</label>
-                                                <input type="text" class='w-100'>
+                                                <label for="city" class='col-block'>City</label>
+                                                <input type="text" name='city' class='w-100'>
                                             </li>
                                             <li>
-                                                <label for="" class='col-block'>PIN/Zip Code</label>
-                                                <input type="text" name="" class='w-100'>
+                                                <label for="pin" class='col-block'>PIN/Zip Code</label>
+                                                <input type="text" name="pin" class='w-100'>
                                             </li>
                                             <li>
-                                                <button class="regi-registerbtn">Complete Registration &gt;&gt; </button>
+                                                <button type='submit' class="regi-registerbtn">Complete Registration &gt;&gt; </button>
                                             </li>
                                         </ul>
                                     </div>
