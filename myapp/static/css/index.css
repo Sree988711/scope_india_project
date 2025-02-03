@@ -45,6 +45,18 @@ header{
     background-image: linear-gradient(#f2b42d, #fd0300);
     text-decoration: none;
 }
+.login{
+    color: #fff;
+    background: #0039a4;
+    font-weight: 600;
+    border: 1px solid #f1de01d1;
+    display: inline;
+    padding: 6px 10px;
+    background-image: linear-gradient(#f2b42d, #009318);
+    text-decoration: none;
+    margin-right: -20px;
+    margin-left: 10px;
+}   
 .hamburger-menu{
     width: 35px;
     height: 2.2px;
@@ -468,6 +480,9 @@ footer{
     }
     .iframedivinner{
         max-width: 1060px;
+    }
+    .hamburgercontainer{
+        display: none;
     }
 }
 @media only screen and (min-width: 960px) and (max-width: 1239px){

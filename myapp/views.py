@@ -90,3 +90,5 @@ def register(request):
         'parents':parents,
         'parent_child':parent_child
     })
+def login(request):
+    return render(request,'login.html')
