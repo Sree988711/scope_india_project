@@ -92,3 +92,12 @@ def register(request):
     })
 def login(request):
     return render(request,'login.html')
+
+def send_otp(request):
+    return render(request,'send-otp.html')
+
+def set_password(request):
+    return render(request,'set-password.html')
+
+def verify_otp(request):
+    return render(request,'verify-otp.html')

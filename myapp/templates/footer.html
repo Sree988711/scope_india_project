@@ -1,0 +1,86 @@
+{% load static %}
+{% block footer %}
+<footer>
+    <div class="container footerstart-v2">
+        <div class="container-fluid footimg">
+            <img src="{% static 'img\snowpark-footer-logo.png'%}" alt="footer_logo" class="d-flex mx-auto footlogo">
+            <p class='footdesc'>Technopark TVM | Thampanoor TVM | Kochi, Kerala | Nagercoil, Tamil Nadu</p>
+            <img src="{% static 'img\iso_iaflogo.png'%}" alt="iso-logo" class="d-flex mx-auto isologo">
+            <p class="footdesc footspacing">An ISO 9001:2015 Certified Company</p>
+            <p class="footcopyright footspacing">All Rights Reserved<a href="#"> Suffix E Solutions </a>&copy; 2007-2025</p>
+            <div class="container contactcontainer">
+                <div class="row footcontactv2">
+                    <a href="tel:9745936073" class='col'>
+                        <div class="footcontact">
+                            9745936073 (TPK) 
+                        </div>
+                    </a>
+                    <a href="tel:9745936073" class='col'>
+                        <div class="footcontact">
+                            9745936073 (TVM)  
+                        </div>
+                    </a>
+                    <a href="tel:7592939481" class='col'>
+                        <div class="footcontact">
+                            7592939481 (EKM) 
+                        </div>
+                    </a>
+                    <a href="tel:8075536185" class='col'>
+                        <div class="footcontact">
+                            8075536185 (NGL) 
+                        </div>
+                    </a>
+                    <a href="mailto:info@scopeindia.org" class='col'>
+                        <div class="footcontact">
+                            info@scopeindia.org
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- side-menu -->
+<div class="container-fluid sidemenucontainer">
+    <div class="closediv">
+        <a href="#" class="closebtn">X</a>
+    </div>
+    <div class="container-fluid sidelistdiv">
+        <nav>
+            <ul class="sidelist">
+                <li>
+                    <a href="{% url "home" %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url "courses" %}">Courses</a>
+                </li>
+                <li>
+                    <a href="#">Placement Cell</a>
+                </li>
+                <li>
+                    <a href="{% url "about" %}">Know SCOPE INDIA</a>
+                </li>
+                <li>
+                    <a href="{% url "contact" %}">Contact us</a>
+                </li>
+                <li>
+                    <a href="{% url "register" %}"><button>Register Now</button></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script>
+    const hamMenu=document.querySelector('.hamburgercontainer');
+    const offScreenMenu=document.querySelector('.sidemenucontainer');
+    const closeMenu=document.querySelector('.closebtn');
+    hamMenu.addEventListener('click',()=>{
+        offScreenMenu.classList.toggle('active');
+    });
+    closeMenu.addEventListener('click',()=>{
+        offScreenMenu.classList.toggle('active');
+    })
+</script>
+{% endblock footer %}

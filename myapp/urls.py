@@ -8,5 +8,8 @@ urlpatterns = [
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
     path('register/',views.register,name='register'),
-    path('login/',views.login,name='login')
+    path('login/',views.login,name='login'),
+    path('send-otp/',views.send_otp,name='send-otp'),
+    path('set-password/',views.set_password,name='set-password'),
+    path('verify-otp/',views.verify_otp,name='verify-otp')
 ]
