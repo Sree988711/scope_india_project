@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Courses
-from .models import Registration
+from .models import Registration,Students
+import random
+from django.core.mail import EmailMessage
+from django.contrib import messages
 # from .models import courses,testing_courses,networking_courses,other_courses
 # Create your views here.
 def index(request):
@@ -94,10 +97,37 @@ def login(request):
     return render(request,'login.html')
 
 def send_otp(request):
+    if request.method == "POST":
+        email=request.POST.get('inputemail')
+        otpgen=random.randrange(1000,9999)
+        #sendingotp
+        subject='Scope India OTP'
+        message='Your otp is {}'.format(otpgen)
+        frommail='988711test40@gmail.com'
+        tomail=email
+        mail=EmailMessage(subject,message,frommail,[tomail])
+        mail.send()
+        print(email,otpgen)
+        messages.success(request,'OTP Sent Successfully to {}'.format(email))
+        #dbsave
+        studentobj,created=Students.objects.update_or_create(
+            email=email,
+            defaults={'otp':otpgen}
+        )
+        #session
+        request.session['reset_email']=email
+
+        return redirect('verify-otp')
     return render(request,'send-otp.html')
 
-def set_password(request):
-    return render(request,'set-password.html')
-
 def verify_otp(request):
-    return render(request,'verify-otp.html')
+    email=request.session.get('reset_email','')
+    return render(request,'verify-otp.html',{
+        'email':email
+    })
+
+def set_password(request):
+    email=request.session.get('reset_email','')
+    return render(request,'set-password.html',{
+        'email':email
+    })

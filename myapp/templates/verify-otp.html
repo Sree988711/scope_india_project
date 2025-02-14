@@ -22,12 +22,23 @@
 <body>
     {% include "navbar.html" %}
     <main class="form-signin text-center">
-        <form>
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                <div class="alert 
+                    {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method='POST'>
+            {% csrf_token %}
             <img class="mb-4" src="{% static "img\login.png" %}" alt="no img" width="300" height="100">
             <h1 class="h3 mb-3 fw-normal text-primary">Verify OTP</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="{{ email }}" readonly>
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
@@ -35,7 +46,7 @@
                 <label for="floatingInput">OTP</label>
             </div>
 
-            <a href='{% url "set-password" %}' class="w-100 btn btn-lg btn-primary mt-3" type="submit">Submit</a>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Submit</button>
         </form>
     </main>
     {% comment %} footercontent  {% endcomment %}

@@ -42,3 +42,9 @@ class Registration(models.Model):
     def __str__(self):
         return self.full_name
 
+class Students(models.Model):
+    email=models.EmailField(max_length=50,null=False,blank=False,unique=True)
+    otp=models.IntegerField(null=False,blank=False)
+
+    def __str__(self):
+        return self.email
