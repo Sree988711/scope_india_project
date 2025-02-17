@@ -23,8 +23,7 @@
 
 <body>
     {% include "navbar.html" %}
-    <main class="form-signin text-center">
-        {% if messages %}
+    {% if messages %}
             <div>
                 {% for message in messages %}
                 <div class="alert 
@@ -33,31 +32,14 @@
                 </div>
                 {% endfor %}
             </div>
-        {% endif %}
-        <form method="POST">
-            {% csrf_token %}
-            <img class="mb-4" src="{% static "img\login.png" %}" alt="no img" width="300" height="100">
-            <h1 class="h3 mb-3 fw-normal text-primary">Please Log in</h1>
+    {% endif %}
+    
+    <h1>Welcome, {{email}}</h1>
+    <a href='{% url "logout" %}' class="btn btn-lg btn-primary mt-3" type='submit'>Log out</a>
 
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="{{ email }}">
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name='password'>
-                <label for="floatingPassword">Password</label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Log in</button>
-            <div class="checkbox mt-3 fs-5">
-                <a href="{% url "send-otp" %}">First time login
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                    </svg>
-                </a>
-            </div>
-        </form>
-    </main>
-    {% comment %} footercontent  {% endcomment %}
+
+
+
     {% include "footer.html" %}
 </body>
 </html>

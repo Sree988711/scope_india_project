@@ -5,7 +5,8 @@ from .models import Registration,Students
 import random
 from django.core.mail import EmailMessage
 from django.contrib import messages
-# from .models import courses,testing_courses,networking_courses,other_courses
+from django.contrib.auth.hashers import make_password,check_password
+
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -94,7 +95,25 @@ def register(request):
         'parent_child':parent_child
     })
 def login(request):
-    return render(request,'login.html')
+    email=request.session.get('reset_email','')
+
+    if request.method == "POST":
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        try:
+            studentobj=Students.objects.get(email=email)
+            if check_password(password,studentobj.password):
+                request.session.flush()
+                request.session['login_email']=email
+                messages.success(request,'Login successful.')
+                return redirect('dashboard')
+            else:
+                messages.error(request,'Invalid email or password..')
+        except Students.DoesNotExist:
+            messages.error(request,'User data Not found, Please Sign Up.')
+    return render(request,'login.html',{
+        'email':email
+    })
 
 def send_otp(request):
     if request.method == "POST":
@@ -122,12 +141,51 @@ def send_otp(request):
 
 def verify_otp(request):
     email=request.session.get('reset_email','')
+    if request.method == 'POST':
+        otp=request.POST.get('inputotp')
+        print(otp)
+        try:
+            studentobj=Students.objects.get(email=email)
+            if str(studentobj.otp) == otp:
+                messages.success(request, 'OTP verified successfully.')
+                return redirect('set-password')
+            else:
+                messages.error(request,'Invalid OTP. Please try again.')
+        except Students.DoesNotExist:
+            messages.error(request,'No data found')
     return render(request,'verify-otp.html',{
         'email':email
     })
 
 def set_password(request):
     email=request.session.get('reset_email','')
+    if request.method == "POST":
+        pass_1=request.POST.get('inp_pass')
+        pass_2=request.POST.get('con_pass')
+        print(pass_1,pass_2)
+        if pass_1 != pass_2:
+            messages.error(request, "Passwords do not match. Please try again.")
+        else:
+            try:
+                student=Students.objects.get(email=email)
+                student.password=make_password(pass_1)
+                student.save()
+                messages.success(request, "Password set successfully! You can now log in.")
+                return redirect('login')
+            except Students.DoesNotExist:
+                messages.error(request, "No account found with this email.")
+
     return render(request,'set-password.html',{
         'email':email
     })
+
+def dashboard(request):
+    email=request.session.get('login_email','')
+
+    return render(request,'dashboard.html',{
+        'email':email
+    })
+
+def logout(request):
+    request.session.flush()
+    return redirect('login')
