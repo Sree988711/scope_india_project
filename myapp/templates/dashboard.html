@@ -22,24 +22,156 @@
   </head>
 
 <body>
-    {% include "navbar.html" %}
-    {% if messages %}
-            <div>
-                {% for message in messages %}
-                <div class="alert 
-                    {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
-                    {{ message }}
-                </div>
-                {% endfor %}
-            </div>
-    {% endif %}
+  {% comment %} {% include "navbar.html" %} {% endcomment %}
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+      <div class="alert 
+          {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+          {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{% url "home" %}">
+      <h2>Welcome, {{email}}</h2>
+    </a>
+    <img src="{% static "img\iso_iaflogo.png" %}" alt="Img not set" width="50" height='50'>
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3 white" href="{% url "logout" %}">Log out</a>
+      </div>
+    </div>
+  </header>
     
-    <h1>Welcome, {{email}}</h1>
-    <a href='{% url "logout" %}' class="btn btn-lg btn-primary mt-3" type='submit'>Log out</a>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url "home" %}">
+                <span data-feather="home"></span>
+                View Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "home" %}">
+                <span data-feather="file"></span>
+                Edit Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "home" %}">
+                <span data-feather="shopping-cart"></span>
+                Change Password
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "home" %}">
+                <span data-feather="users"></span>
+                Courses
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "home" %}">
+                <span data-feather="bar-chart-2"></span>
+                Enroll Course
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard Overview</h1>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Full Name</th>
+                    <td scope="col">{{details.full_name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Date of Birth</th>
+                    <td scope="col">{{details.dob}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Gender</th>
+                    <td scope="col">{{details.gender}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Qualification</th>
+                    <td scope="col">{{details.qualification}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Course</th>
+                    <td scope="col">{{details.course}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Mobile</th>
+                    <td scope="col">{{details.mobile}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Email</th>
+                    <td scope="col">{{details.email}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Guardian Mobile</th>
+                    <td scope="col">{{details.guardian_mobile}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Mode</th>
+                    <td scope="col">{{details.mode}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Location</th>
+                    <td scope="col">{{details.location}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Guardian Name</th>
+                    <td scope="col">{{details.guardian_name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Guardian Occupation</th>
+                    <td scope="col">{{details.guardian_occupation}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Preffered timings</th>
+                    <td scope="col">{{details.preferred_timings}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Address</th>
+                    <td scope="col">{{details.address}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Country</th>
+                    <td scope="col">{{details.country}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">State</th>
+                    <td scope="col">{{details.state}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">City</th>
+                    <td scope="col">{{details.city}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Pin</th>
+                    <td scope="col">{{details.pin}}</td>
+                  </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+  </div>
 
 
 
-
-    {% include "footer.html" %}
+{% include "footer.html" %}
 </body>
 </html>

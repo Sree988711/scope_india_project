@@ -88,7 +88,8 @@ def register(request):
             pin=pin
         )
         registration.save()
-        return HttpResponse("Registration Successful")
+        messages.success(request,'Registration Successful')
+        return redirect('register')
     
     return render(request,'register.html',{
         'parents':parents,
@@ -105,7 +106,6 @@ def login(request):
             if check_password(password,studentobj.password):
                 request.session.flush()
                 request.session['login_email']=email
-                messages.success(request,'Login successful.')
                 return redirect('dashboard')
             else:
                 messages.error(request,'Invalid email or password..')
@@ -181,9 +181,16 @@ def set_password(request):
 
 def dashboard(request):
     email=request.session.get('login_email','')
-
+    student=Students.objects.get(email=email)
+    try:
+        details=Registration.objects.get(email=email)
+    except Registration.DoesNotExist:
+        messages.error(request,'Please register here before accessing Dashboard')
+        return redirect('register')
     return render(request,'dashboard.html',{
-        'email':email
+        'email':email,
+        'details':details,
+        'student':student
     })
 
 def logout(request):

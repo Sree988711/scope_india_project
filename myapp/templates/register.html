@@ -33,6 +33,16 @@
             </div>
             <div class='container-fluid'>
                 <div class='container section-wrapper register-callback'>
+                    {% if messages %}
+                    <div>
+                    {% for message in messages %}
+                        <div class="alert 
+                            {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
                     <form action="#" method="POST">
                         {% csrf_token %}
                         <div class='row'>
