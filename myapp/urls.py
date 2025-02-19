@@ -14,4 +14,6 @@ urlpatterns = [
     path('verify-otp/',views.verify_otp,name='verify-otp'),
     path('dashboard/',views.dashboard,name='dashboard'),
     path('logout/',views.logout,name='logout'),
+    path('view-profile/',views.view_profile,name='view_profile'),
+    path('edit-profile/',views.edit_profile,name='edit_profile'),
 ]

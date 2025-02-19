@@ -103,6 +103,11 @@ def login(request):
         password=request.POST.get('password')
         try:
             studentobj=Students.objects.get(email=email)
+
+            if studentobj.password is None:  
+                messages.error(request, "No password set for this account. Please reset your password.")
+                return redirect('send-otp')
+            
             if check_password(password,studentobj.password):
                 request.session.flush()
                 request.session['login_email']=email
@@ -196,3 +201,47 @@ def dashboard(request):
 def logout(request):
     request.session.flush()
     return redirect('login')
+
+def view_profile(request):
+    email=request.session.get('login_email','')
+    student=Students.objects.get(email=email)
+    try:
+        details=Registration.objects.get(email=email)
+    except Registration.DoesNotExist:
+        messages.error(request,'Please register here before accessing Dashboard')
+        return redirect('register')
+    return render(request,'view_profile.html',{
+        'email':email,
+        'details':details,
+        'student':student
+    })
+
+def edit_profile(request):
+    email = request.session.get('login_email', '')
+    student = Students.objects.get(email=email)
+    try:
+        details = Registration.objects.get(email=email)
+    except Registration.DoesNotExist:
+        messages.error(request, "Profile not found.")
+        return redirect('dashboard')
+
+    if request.method == "POST":
+        details.full_name = request.POST['full_name']
+        details.dob = request.POST['dob']
+        details.gender = request.POST['gender']
+        details.mobile = request.POST['mobile']
+        details.address = request.POST['address']
+        details.save()
+
+        if 'profile_image' in request.FILES:
+            student.image = request.FILES['profile_image']
+            student.save()
+            
+        messages.success(request, "Profile updated successfully!")
+        return redirect('view_profile')
+
+    return render(request, 'edit_profile.html', {
+        'details': details,
+        'email':email,
+        'student':student,
+        })
