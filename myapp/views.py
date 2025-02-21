@@ -217,31 +217,84 @@ def view_profile(request):
     })
 
 def edit_profile(request):
-    email = request.session.get('login_email', '')
-    student = Students.objects.get(email=email)
+    email=request.session.get('login_email','')
+    student=Students.objects.get(email=email)
     try:
-        details = Registration.objects.get(email=email)
+        details=Registration.objects.get(email=email)
     except Registration.DoesNotExist:
         messages.error(request, "Profile not found.")
         return redirect('dashboard')
 
     if request.method == "POST":
-        details.full_name = request.POST['full_name']
-        details.dob = request.POST['dob']
-        details.gender = request.POST['gender']
-        details.mobile = request.POST['mobile']
-        details.address = request.POST['address']
+        details.full_name=request.POST['full_name']
+        details.dob=request.POST['dob']
+        details.gender=request.POST['gender']
+        details.mobile=request.POST['mobile']
+        details.address=request.POST['address']
         details.save()
 
         if 'profile_image' in request.FILES:
-            student.image = request.FILES['profile_image']
+            student.image=request.FILES['profile_image']
             student.save()
             
-        messages.success(request, "Profile updated successfully!")
+        messages.success(request,"Profile updated successfully!")
         return redirect('view_profile')
 
-    return render(request, 'edit_profile.html', {
+    return render(request,'edit_profile.html',{
         'details': details,
         'email':email,
         'student':student,
         })
+
+def change_password(request):
+    email = request.session.get('login_email','')
+    try:
+        student = Students.objects.get(email=email)
+    except Students.DoesNotExist:
+        messages.error(request, "User not found.")
+        return redirect('login')
+
+    if request.method == "POST":
+        current_password=request.POST.get("current_password")
+        new_password=request.POST.get("new_password")
+        confirm_new_password=request.POST.get("confirm_new_password")
+
+        if not student.password:
+            messages.error(request,"Current password not set.")
+            return redirect('change_password')
+
+        if not check_password(current_password,student.password):
+            messages.error(request, "Current password is incorrect.")
+            return redirect('change_password')
+
+        if new_password != confirm_new_password:
+            messages.error(request,"Passwords does not match.")
+            return redirect('change_password')
+
+        student.password=make_password(new_password)
+        student.save()
+        messages.success(request,"Password changed successfully!")
+        return redirect('dashboard')
+
+    return render(request,'change_password.html', {
+        'email': email,
+        'student': student
+    })
+def view_courses(request):
+    email=request.session.get('login_email','')
+    student=Students.objects.get(email=email)
+    details=Registration.objects.get(email=email)
+    return render(request,'view_courses.html',{
+        'email':email,
+        'student':student,
+        'details':details,
+    })
+def change_course(request):
+    email=request.session.get('login_email','')
+    student=Students.objects.get(email=email)
+    course=Courses.objects.exclude(parent_id=0)
+    return render(request,'change_course.html',{
+        'email':email,
+        'student':student,
+        'course':course
+    })

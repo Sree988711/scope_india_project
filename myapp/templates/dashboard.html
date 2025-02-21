@@ -22,18 +22,6 @@
   </head>
 
 <body>
-  {% comment %} {% include "navbar.html" %} {% endcomment %}
-  {% if messages %}
-    <div>
-      {% for message in messages %}
-      <div class="alert 
-          {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
-          {{ message }}
-      </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-
   <header class="navbar navbar-dark sticky-top bg-dark p-3 shadow d-flex justify-content-between align-items-center">
     <h2 class="text-white m-0">Welcome, {{ email }}</h2>
     <div class="d-flex align-items-center">
@@ -67,19 +55,19 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url "home" %}">
+              <a class="nav-link" href="{% url "change_password" %}">
                 <span data-feather="shopping-cart"></span>
                 Change Password
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url "home" %}">
+              <a class="nav-link" href="{% url "view_courses" %}">
                 <span data-feather="users"></span>
                 Courses
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url "home" %}">
+              <a class="nav-link" href="{% url "change_course" %}">
                 <span data-feather="bar-chart-2"></span>
                 Enroll Course
               </a>
@@ -88,6 +76,16 @@
         </div>
       </nav>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% if messages %}
+    <div>
+      {% for message in messages %}
+      <div class="alert 
+          {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+          {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+      {% endif %}
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard Overview</h1>
         </div>
