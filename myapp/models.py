@@ -47,6 +47,17 @@ class Students(models.Model):
     otp=models.IntegerField(null=False,blank=False)
     password=models.TextField(null=True)
     image=models.ImageField(upload_to="profile_images/",null=True,blank=True)
+    additional_courses = models.TextField(null=True, blank=True)
+
+    def add_course(self,course_name):
+        if self.additional_courses:
+            courses=self.additional_courses.split(',')
+            if course_name not in courses:
+                courses.append(course_name)
+                self.additional_courses= ','.join(courses)
+        else:
+            self.additional_courses=course_name
+        self.save()
 
     def __str__(self):
         return self.email

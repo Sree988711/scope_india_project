@@ -73,25 +73,61 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Course Preferences</h1>
+                    <h1 class="h2">Primary Course</h1>
                 </div>
-                {% if messages %}
-                <div>
-                {% for message in messages %}
-                    <div class="alert 
-                    {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
-                    {{ message }}
-                    </div>
-                {% endfor %}
-                </div>
-                {% endif %}
+                
                 <form method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label class="form-label">Primary Course: </label>
+                        {% comment %} <label class="form-label">Primary Course: </label> {% endcomment %}
                         <label>{{details.course}} (cannot be changed)</label>
                     </div>
-                    
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Additional Courses</h1>
+                    </div>
+                    {% if messages %}
+                    <div>
+                    {% for message in messages %}
+                        <div class="alert 
+                        {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+                        {{ message }}
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                    <label class='mb-3'>Any additional courses that you've enrolled will be displayed below.
+                        <a href='{% url "change_course" %}'>Click here</a> to enroll now.
+                    </label>
+                    <div class="container-fluid">
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            {% for course in enrolled_courses %}
+                            <div class="col">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">
+                                        {% if course.parent_id == 1 %}
+                                            Software Programming Courses
+                                        {% elif course.parent_id == 2 %}
+                                            Software Testing Courses
+                                        {% elif course.parent_id == 3 %}
+                                            Networking, Server, & Cloud
+                                        {% elif course.parent_id == 4 %}
+                                            Other Courses
+                                        {% else %}
+                                            Unknown Category
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ course.courses_name }}</h5>
+                                        <p class="card-text">Duration: {{ course.duration }}</p>
+                                        <a href="{% url 'detailx' course.parent_id course.id %}" class="btn btn-primary">More Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <p>No enrolled courses yet.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </form>
             </main>
         </div>

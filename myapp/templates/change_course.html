@@ -85,118 +85,40 @@
                 {% endfor %}
                 </div>
                 {% endif %}
-                <form method="POST">
-                    {% csrf_token %}
-                    
-                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                        {% for cow in course %}
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">
-                                    {% if cow.parent_id == 1 %}
-                                        Software Programming Courses
-                                    {% elif cow.parent_id == 2 %}
-                                        Software Testing Courses
-                                    {% elif cow.parent_id == 3 %}
-                                        Networking, Server, & Cloud
-                                    {% elif cow.parent_id == 4 %}
-                                        Other Courses
-                                    {% else %}
-                                        Unknown Category
-                                    {% endif %}
-                                </div>
-                                <div class="card-body">
-                                  <h5 class="card-title">{{ cow.courses_name}}</h5>
-                                  <p class="card-text">4 months course + 3 months on the Job Training</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class='btn btn-success'>Enroll now!</button>
-                                    <a href='{% url "detailx" cow.parent_id cow.id %}' class='btn btn-danger'>More details</a>
-                                </div>
+                
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    {% for cow in course %}
+                    <form method="POST">
+                        {% csrf_token %}
+                    <div class="col">
+                        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header">
+                                {% if cow.parent_id == 1 %}
+                                    Software Programming Courses
+                                {% elif cow.parent_id == 2 %}
+                                    Software Testing Courses
+                                {% elif cow.parent_id == 3 %}
+                                    Networking, Server, & Cloud
+                                {% elif cow.parent_id == 4 %}
+                                    Other Courses
+                                {% else %}
+                                    Unknown Category
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ cow.courses_name}}</h5>
+                                <p class="card-text">{{ cow.duration }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="hidden" name="selected_course" value="{{ cow.courses_name }}">
+                                <button type='submit' class='btn btn-success'>Enroll now!</button>
+                                <a href='{% url "detailx" cow.parent_id cow.id %}' class='btn btn-danger'>More details</a>
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
-                    
-                        {% comment %} <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-                    
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-                    
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Header</div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Light card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">Footer</div>
-                            </div>
-                        </div> {% endcomment %}
-
-                    
-                </form>
+                    </form>
+                    {% endfor %}
+                </div>
             </main>
         </div>
     </div>

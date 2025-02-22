@@ -186,16 +186,30 @@ def set_password(request):
 
 def dashboard(request):
     email=request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     student=Students.objects.get(email=email)
     try:
         details=Registration.objects.get(email=email)
     except Registration.DoesNotExist:
         messages.error(request,'Please register here before accessing Dashboard')
         return redirect('register')
+    
+    total_courses=21
+    if student.additional_courses:
+        completed_courses=len(student.additional_courses.split(',')) + 1
+    else:
+        completed_courses=1
+    recommended_courses=Courses.objects.exclude(parent_id=0).order_by('?')[:6]
     return render(request,'dashboard.html',{
         'email':email,
         'details':details,
-        'student':student
+        'student':student,
+        'completed_courses':completed_courses,
+        'total_courses':total_courses,
+        'recommended_courses':recommended_courses,
     })
 
 def logout(request):
@@ -204,6 +218,10 @@ def logout(request):
 
 def view_profile(request):
     email=request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     student=Students.objects.get(email=email)
     try:
         details=Registration.objects.get(email=email)
@@ -218,6 +236,10 @@ def view_profile(request):
 
 def edit_profile(request):
     email=request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     student=Students.objects.get(email=email)
     try:
         details=Registration.objects.get(email=email)
@@ -248,6 +270,10 @@ def edit_profile(request):
 
 def change_password(request):
     email = request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     try:
         student = Students.objects.get(email=email)
     except Students.DoesNotExist:
@@ -282,17 +308,37 @@ def change_password(request):
     })
 def view_courses(request):
     email=request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     student=Students.objects.get(email=email)
+    enrolled_courses=[]
+    if student.additional_courses:
+        course_names=student.additional_courses.split(',')
+        enrolled_courses=Courses.objects.filter(courses_name__in=course_names)
+
     details=Registration.objects.get(email=email)
     return render(request,'view_courses.html',{
         'email':email,
         'student':student,
         'details':details,
+        'enrolled_courses':enrolled_courses,
     })
 def change_course(request):
     email=request.session.get('login_email','')
+    if not email:
+        messages.error(request,'session not found, please do login')
+        return redirect('login')
+    
     student=Students.objects.get(email=email)
     course=Courses.objects.exclude(parent_id=0)
+    if request.method == 'POST':
+        selected_course=request.POST.get('selected_course')
+        if selected_course:
+            student.add_course(selected_course)
+            messages.success(request,f'Enrollment Successful:{selected_course}')
+        return redirect('view_courses')
     return render(request,'change_course.html',{
         'email':email,
         'student':student,

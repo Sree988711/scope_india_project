@@ -89,9 +89,79 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard Overview</h1>
         </div>
-      </main>
+      <!-- Dashboard Cards -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card bg-primary text-white mb-4">
+            <div class="card-body">Total Courses Available: {{ total_courses }}</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-success text-white mb-4">
+            <div class="card-body">Total enrolled Courses: {{ completed_courses }}</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-warning text-dark mb-4">
+            <div class="card-body">Additional Courses: {{ completed_courses|add:"-1" }}</div>
+          </div>
+        </div>
+      </div>
 
-    </div>
+      <!-- Dashboard Graphs -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Course Progress</h5>
+              <canvas id="courseProgressChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Recommended Courses</h5>
+              <div class="row">
+                {% for course in recommended_courses %}
+                <div class="col-md-4">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <h6 class="card-title">{{ course.courses_name }}</h6>
+                      <p class="card-text">{{ course.duration|truncatewords:15 }}</p>
+                      <a href="{% url "change_course" %}" class="btn btn-primary btn-sm">Enroll Now</a>
+                    </div>
+                  </div>
+                </div>
+                {% empty %}
+                <p class="text-muted">No recommendations available.</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
+</div>
+<div class="row mt-4">
+  
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctx1 = document.getElementById('courseProgressChart').getContext('2d');
+  var courseProgressChart = new Chart(ctx1, {
+    type: 'doughnut',
+    data: {
+      labels: ['Total', 'Enrolled'],
+      datasets: [{
+        data: [{{ total_courses }}, {{ completed_courses }}],
+        backgroundColor: ['#007bff','#28a745',]
+      }]
+    }
+  });
+</script>
 </body>
 </html>
