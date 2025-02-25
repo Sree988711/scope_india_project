@@ -124,7 +124,7 @@ def register(request):
         )
         registration.save()
         messages.success(request,'Registration Successful')
-        return redirect('register')
+        return redirect('login')
     
     return render(request,'register.html',{
         'parents':parents,
@@ -335,7 +335,8 @@ def change_password(request):
         student.password=make_password(new_password)
         student.save()
         messages.success(request,"Password changed successfully!")
-        return redirect('dashboard')
+        request.session.flush()
+        return redirect('login')
 
     return render(request,'change_password.html', {
         'email': email,
