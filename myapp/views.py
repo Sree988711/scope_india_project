@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Courses
-from .models import Registration,Students
+from .models import Registration,Students,Callback
 import random
 from django.core.mail import EmailMessage
 from django.contrib import messages
@@ -9,6 +9,18 @@ from django.contrib.auth.hashers import make_password,check_password
 
 # Create your views here.
 def index(request):
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        mobile=request.POST.get('phone')
+        print(name,mobile)
+        callback=Callback(
+            name=name,
+            mobile=mobile
+        )
+        callback.save()
+        messages.success(request,'You will receive a call soon.')
+        return redirect('register')
+
     return render(request,'index.html')
 def course(request):
     details=Courses.objects.filter(parent_id=0)
@@ -16,6 +28,17 @@ def course(request):
     testing=Courses.objects.filter(parent_id=2)
     networking=Courses.objects.filter(parent_id=3)
     other=Courses.objects.filter(parent_id=4)
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        mobile=request.POST.get('phone')
+        print(name,mobile)
+        callback=Callback(
+            name=name,
+            mobile=mobile
+        )
+        callback.save()
+        messages.success(request,'You will receive a call soon.')
+        return redirect('register')
     return render(request,'courses.html',{
         'details':details,
         'software':software,
@@ -35,6 +58,18 @@ def course_details(request,id,parent_id):
 def about(request):
     return render(request,'about.html')
 def contact(request):
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        mobile=request.POST.get('phone')
+        print(name,mobile)
+        callback=Callback(
+            name=name,
+            mobile=mobile
+        )
+        callback.save()
+        messages.success(request,'You will receive a call soon.')
+        return redirect('register')
+    
     return render(request,'contact.html')
 def register(request):
     parents=Courses.objects.filter(parent_id=0)

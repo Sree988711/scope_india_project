@@ -132,11 +132,15 @@
                                             </li>
                                             <li>
                                                 <label for="country" class='col-block'>Country</label>
-                                                <input type="text" name="country" class='w-100'>
+                                                <select name="country" id="country" class='w-100 regi-multichoice' required>
+                                                    <option value="">Select Country</option>
+                                                </select>
                                             </li>
                                             <li>
                                                 <label for="state" class='col-block'>State</label>
-                                                <input type="text" name='state' class='w-100'>
+                                                <select name="state" id="state" class='w-100 regi-multichoice' required>
+                                                    <option value="">Select State</option>
+                                                </select>
                                             </li>
                                             <li>
                                                 <label for="city" class='col-block'>City</label>
@@ -396,6 +400,49 @@
         closeMenu.addEventListener('click',()=>{
             offScreenMenu.classList.toggle('active');
         })
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const countrySelect = document.getElementById("country");
+            const stateSelect = document.getElementById("state");
+    
+            // Load country data
+            fetch("https://restcountries.com/v3.1/all")
+                .then(response => response.json())
+                .then(data => {
+                    data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+                    data.forEach(country => {
+                        let option = document.createElement("option");
+                        option.value = country.name.common;
+                        option.textContent = country.name.common;
+                        countrySelect.appendChild(option);
+                    });
+                });
+    
+            countrySelect.addEventListener("change", function () {
+                const selectedCountry = countrySelect.value;
+                stateSelect.innerHTML = "<option value=''>Select State</option>";0
+    
+                if (selectedCountry) {
+                    fetch(`https://countriesnow.space/api/v0.1/countries/states`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ country: selectedCountry })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.data && data.data.states) {
+                            data.data.states.forEach(state => {
+                                let option = document.createElement("option");
+                                option.value = state.name;
+                                option.textContent = state.name;
+                                stateSelect.appendChild(option);
+                            });
+                        }
+                    })
+                    .catch(error => console.error("Error fetching states:", error));
+                }
+            });
+        });
     </script>
 </body>
 </html>
