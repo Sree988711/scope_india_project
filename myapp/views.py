@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from .models import Courses
 from .models import Registration,Students,Callback
@@ -234,7 +234,7 @@ def dashboard(request):
     
     total_courses=21
     if student.additional_courses:
-        completed_courses=len(student.additional_courses.split(',')) + 1
+        completed_courses=len(student.additional_courses.split(';')) + 1
     else:
         completed_courses=1
     recommended_courses=Courses.objects.exclude(parent_id=0).order_by('?')[:6]
@@ -351,7 +351,7 @@ def view_courses(request):
     student=Students.objects.get(email=email)
     enrolled_courses=[]
     if student.additional_courses:
-        course_names=student.additional_courses.split(',')
+        course_names=student.additional_courses.split(';')
         enrolled_courses=Courses.objects.filter(courses_name__in=course_names)
 
     details=Registration.objects.get(email=email)
@@ -380,3 +380,24 @@ def change_course(request):
         'student':student,
         'course':course
     })
+
+def delete_course(request, course_id):
+    email=request.session.get('login_email', '')
+    if not email:
+        messages.error(request,'Session not found, please log in.')
+        return redirect('login')
+
+    student=get_object_or_404(Students,email=email)
+    course=get_object_or_404(Courses,id=course_id)
+
+    if student.additional_courses:
+        courses=student.additional_courses.split(';')
+        if course.courses_name in courses:
+            courses.remove(course.courses_name)
+            student.additional_courses= ';'.join(courses) if courses else None
+            student.save()
+            messages.success(request,f'Course "{course.courses_name}" removed successfully!')
+        else:
+            messages.error(request,'Course not found.')
+    
+    return redirect('view_courses')

@@ -19,4 +19,5 @@ urlpatterns = [
     path('change-password/',views.change_password,name='change_password'),
     path('view-courses/',views.view_courses,name='view_courses'),
     path('change-course/',views.change_course,name='change_course'),
+    path('delete-course/<int:course_id>/',views.delete_course,name='delete_course'),
 ]

@@ -120,6 +120,10 @@
                                         <h5 class="card-title">{{ course.courses_name }}</h5>
                                         <p class="card-text">Duration: {{ course.duration }}</p>
                                         <a href="{% url 'detailx' course.parent_id course.id %}" class="btn btn-primary">More Details</a>
+                                        <a href="{% url 'delete_course' course.id %}" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to remove this course?');">
+                                            Delete
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -109,7 +109,7 @@
                                 <h5 class="card-title">{{ cow.courses_name}}</h5>
                                 <p class="card-text">{{ cow.duration }}</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer w-100">
                                 <input type="hidden" name="selected_course" value="{{ cow.courses_name }}">
                                 <button type='submit' class='btn btn-success'>Enroll now!</button>
                                 <a href='{% url "detailx" cow.parent_id cow.id %}' class='btn btn-danger'>More details</a>

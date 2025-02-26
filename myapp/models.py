@@ -51,10 +51,10 @@ class Students(models.Model):
 
     def add_course(self,course_name):
         if self.additional_courses:
-            courses=self.additional_courses.split(',')
+            courses=self.additional_courses.split(';')
             if course_name not in courses:
                 courses.append(course_name)
-                self.additional_courses= ','.join(courses)
+                self.additional_courses= ';'.join(courses)
         else:
             self.additional_courses=course_name
         self.save()
